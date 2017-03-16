@@ -2,6 +2,7 @@ package com.sanaTF.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,7 +36,7 @@ public class SolicitudesDaoImpl implements SolicitudesDao {
 
 	@Override
 	public Solicitudes getSolicitudes(int idSolicitudes) {
-		return (Solicitudes)session.getCurrentSession().createQuery("from Solicitudes f where f.idSolicitudes=:idSolicitudes")
+		return (Solicitudes)session.getCurrentSession().createQuery("from solicitudes f where f.idSolicitud=:idSolicitudes")
 				.setParameter("idSolicitudes",idSolicitudes)
 				.uniqueResult();
 				

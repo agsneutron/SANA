@@ -23,7 +23,7 @@ import javax.persistence.CascadeType;
 public class Usuarios implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int User_Id;
+	private int UserId;
 	private String Usuario;
 	private String Contrasena;
 	private String ReContrasena;
@@ -32,6 +32,7 @@ public class Usuarios implements Serializable{
 	private String direccion;
 	private String telefono;	
 	private String email;
+	private int meta;
 	
     //@OneToOne(cascade=CascadeType.ALL)
 	//@JoinTable(name="Usuarios_Roles",
@@ -63,11 +64,11 @@ public class Usuarios implements Serializable{
 	
 	public Usuarios(){}
 
-	public Usuarios(int User_Id, String Usuario, String Contrasena, String ReContrasena, String nombre, 
-			String direccion, String telefono,String email, Roles rol,
+	public Usuarios(int UserId, String Usuario, String Contrasena, String ReContrasena, String nombre, 
+			String direccion, String telefono,String email,int meta, Roles rol,
 			UsuariosStatus Activo) {
 		super();
-		this.User_Id = User_Id;
+		this.UserId = UserId;
 		this.Usuario = Usuario;
 		this.Contrasena = Contrasena;
 		this.ReContrasena = ReContrasena;
@@ -77,14 +78,20 @@ public class Usuarios implements Serializable{
 		this.email = email;
 		this.rol = rol;
 		this.Activo = Activo;
+		this.meta = meta;
 	}
 
-	public int getUser_Id() {
-		return User_Id;
+	public Usuarios(int int1, String string, String string2, String string3, String string4, String string5,
+			String string6, String string7, int int2) {
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setUser_Id(int user_Id) {
-		this.User_Id = user_Id;
+	public int getUserId() {
+		return UserId;
+	}
+
+	public void setUserId(int userId) {
+		this.UserId = userId;
 	}
 
 	public String getUsuario() {
@@ -159,6 +166,14 @@ public class Usuarios implements Serializable{
 
 	public void setActivo(UsuariosStatus activo) {
 		this.Activo = activo;
+	}
+
+	public int getMeta() {
+		return meta;
+	}
+
+	public void setMeta(int meta) {
+		this.meta = meta;
 	}
 
 		

@@ -35,7 +35,7 @@ public class ClientesDaoImpl implements ClientesDao {
 
 	@Override
 	public Clientes getClientes(int idClientes) {
-		return (Clientes)session.getCurrentSession().createQuery("from Clientes f where f.idClientes=:idClientes")
+		return (Clientes)session.getCurrentSession().createQuery("from Clientes f where f.idCliente=:idClientes")
 				.setParameter("idClientes",idClientes)
 				.uniqueResult();
 				

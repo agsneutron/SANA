@@ -17,30 +17,56 @@ public class UsoRecursos {
 	private int idUsoRecursos;
 	@Column
 	private String nombre;
+	@Column
+	private int IdDestino;
 	
 	
 				
 	public UsoRecursos(){}
-	public UsoRecursos( int idUsoRecursos,String nombre)
-		   {
-				super();
-				this.idUsoRecursos = idUsoRecursos;
-				this.nombre = nombre;				
-		   }
+
+
+
+	public UsoRecursos(int idUsoRecursos, String nombre, int idDestino) {
+		super();
+		this.idUsoRecursos = idUsoRecursos;
+		this.nombre = nombre;
+		IdDestino = idDestino;
+	}
+
+
+
 	public int getIdUsoRecursos() {
 		return idUsoRecursos;
 	}
+
+
+
 	public void setIdUsoRecursos(int idUsoRecursos) {
 		this.idUsoRecursos = idUsoRecursos;
 	}
+
+
+
 	public String getNombre() {
 		return nombre;
 	}
+
+
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	
-	
-	
+
+
+
+	public int getIdDestino() {
+		return IdDestino;
+	}
+
+
+
+	public void setIdDestino(int idDestino) {
+		IdDestino = idDestino;
+	}
+		
 }

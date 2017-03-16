@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import org.apache.axis.AxisFault;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.tomcat.util.codec.binary.Base64;
 //import org.apache.tomcat.jni.User;
@@ -34,7 +36,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.sanaTF.model.ApplicationContextProvider;
 import com.sanaTF.service.UsuariosService;
 import com.sanaTF.model.Usuarios;
-
+import safisrv.ws.schemas.*;
 
 
 import com.sanaTF.model.UsuariosStatus;
@@ -71,14 +73,22 @@ public class UsuariosController {
 	
 	@Autowired
 	private UsuariosService usuariosService;
+	
 			
 	@RequestMapping({"/usuarios"})
-	public String setupForm(Map<String, Object> map,HttpServletRequest request){
+	public String setupForm(Map<String, Object> map,HttpServletRequest request) throws RemoteException{
 		Usuarios usuarios = new Usuarios();		
 		String redirecciona ="usuarios";
 		boolean rolAdministrador = request.isUserInRole("Administrador");
 		boolean rolCaptura = request.isUserInRole("Captura");
 		
+		SAFIServiciosSoap11Stub servicio = new SAFIServiciosSoap11Stub();
+		ConsultaSaldoCreditoRequest req = new ConsultaSaldoCreditoRequest();
+		ConsultaSaldoCreditoResponse res = new ConsultaSaldoCreditoResponse();
+		
+		//req.setClaveUsuario("1621");
+		//req.setCreditoID("100015785");
+		//res = servicio.consultaSaldoCredito(req);
 		
         //int permiso=permisos(request);
 		if (rolAdministrador || rolCaptura){
@@ -122,12 +132,12 @@ public class UsuariosController {
 						}
 						
 						
-						if (usuarios.getUser_Id()==0){
+						if (usuarios.getUserId()==0){
 							usuariosService.add(usuarios);
 							request.setAttribute("scriptError","alertify.alert('El usuario se registró con éxito');");
 						}else{
 							if (usuarios.getContrasena().compareTo("")==0){
-								Usuarios searchUsuario = usuariosService.find(usuarios.getUser_Id()) ;
+								Usuarios searchUsuario = usuariosService.find(usuarios.getUserId()) ;
 								usuarios.setContrasena(searchUsuario.getContrasena());
 								usuarios.setReContrasena(searchUsuario.getReContrasena());
 							}
@@ -146,7 +156,7 @@ public class UsuariosController {
 					break;				
 				case "buscar":
 					//busca el usuario mediante su id
-					Usuarios searchedUsuarios = usuariosService.find(usuarios.getUser_Id()) ;
+					Usuarios searchedUsuarios = usuariosService.find(usuarios.getUserId()) ;
 						            
 					if (searchedUsuarios != null) {
 						usuariosResult = searchedUsuarios;

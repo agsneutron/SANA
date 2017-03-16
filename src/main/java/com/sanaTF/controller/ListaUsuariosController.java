@@ -1,17 +1,16 @@
 package com.sanaTF.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.xml.rpc.ServiceException;
 
-import org.apache.commons.io.output.ByteArrayOutputStream;
-import org.apache.tomcat.util.codec.binary.Base64;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,13 +22,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.persistence.Entity;
+
 
 import com.sanaTF.model.Usuarios;
-import com.sanaTF.model.UsuariosStatus;
 import com.sanaTF.service.UsuariosService;
 
+import safisrv.ws.schemas.*;
+
 import java.util.List;
+
 
 @Controller
 public class ListaUsuariosController {
@@ -38,12 +39,25 @@ public class ListaUsuariosController {
 	private UsuariosService usuariosService;
 	
 	@RequestMapping({"/listausuarios"})
-	public String listado(HttpSession session,Map<String, Object> map,HttpServletRequest request){
+	public String listado(HttpSession session,Map<String, Object> map,HttpServletRequest request) throws RemoteException, ServiceException{
 		Usuarios usuariosResult = new Usuarios();
 		Usuarios usuarios = new Usuarios();	
 		boolean rolAdministrador = request.isUserInRole("Administrador");
 		boolean rolCaptura = request.isUserInRole("Captura");
 		
+		/*SAFIServiciosServiceLocator locator = new SAFIServiciosServiceLocator();
+		SAFIServicios servicio = locator.getSAFIServiciosSoap11();
+		
+	
+		ConsultaSaldoCreditoRequest req = new ConsultaSaldoCreditoRequest();
+		
+		req.setClaveUsuario("agarcia");
+		req.setCreditoID("100015785");
+		req.setDispositivo("android-1");
+		req.setFolio("0001");
+		ConsultaSaldoCreditoResponse res = servicio.consultaSaldoCredito(req);*/
+		
+	  
 		
         //int permiso=permisos(request);
 		if (rolAdministrador || rolCaptura){			

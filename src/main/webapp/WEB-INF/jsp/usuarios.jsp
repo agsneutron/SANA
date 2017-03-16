@@ -13,11 +13,16 @@
         <link href="${pageContext.request.contextPath}/resources/bootstrap/css/ripples.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/bootstrap/css/custom.css" rel="stylesheet">
         
+        
+        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/ajax/ajax-usuarios.js"></script>
+        
+        
         <!-- font Awesome -->
         <link href="${pageContext.request.contextPath}/resources/bootstrap/fonts/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         
         <!-- Google font -->
-		<link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -58,7 +63,7 @@ function envia(page) {
   
   <form:form action="usuarios.do" class="form-horizontal" method="POST" commandName="usuarios"> 
     <fieldset>        
-        <form:hidden path="User_Id" class="form-control" id="user_id" name="user_id" placeholder="user_id"/>
+        <form:hidden path="UserId" class="form-control" id="user_id" name="user_id" placeholder="user_id"/>
 		<div class="form-group">
             <label for="nombre" class="col-lg-4 col-sm-4 col-md-4 control-label hidden-xs">Nombre</label>
             <div class="col-lg-8 col-sm-8 col-md-8">                
@@ -128,8 +133,15 @@ function envia(page) {
         </div>
         
         <div class="form-group">
+            <label for="email" class="col-lg-4 col-sm-4 col-md-4 control-label hidden-xs">Meta</label>
+            <div class="col-lg-8 col-sm-8 col-md-8">
+                <form:input path="meta" class="form-control" id="meta" name="meta" placeholder="Meta" maxlength="100"/>                
+            </div>
+        </div>
+        
+        <div class="form-group">
             <div class="col-lg-8 col-lg-offset-4 col-sm-8 col-sm-offset-4">
-            	<input type="submit" name="action" id="action1" value="Cancelar" class="btn btn-danger"/>
+            	<input type="button" id="cancelar" value="Cancelar" class="btn btn-danger" />
 	            <input type="submit" name="action" id="action2" value="Guardar" class="btn btn-success"/>
             </div>
         </div>
@@ -144,7 +156,7 @@ function envia(page) {
 		</div>            
 	</div><!-- /.center -->
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/resources/bootstrap/js/ripples.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/bootstrap/js/material.min.js"></script>        

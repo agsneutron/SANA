@@ -23,7 +23,7 @@
         <link href="${pageContext.request.contextPath}/resources/bootstrap/css/jquery.mCustomScrollbar.css" rel="stylesheet">
         
         
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -63,17 +63,18 @@
                     <div class="panel-body">
                         <div class="list-group">
                         	<c:forEach items="${listaUsuarios}" var="usuario">
+                        	
 	                        	<div class="list-group-item">
 	                                <div class="icon-clients color-blue" id="envia">
-	                                	<input type="hidden" name="user_id" id="user_id" value="${usuario.getUser_Id()}" class="btn btn-primary"/>	                                	
-	                                	<button type="submit" name="action" id="action1" value="${usuario.getUser_Id()}" class="btn btn-default btn-fab btn-fab-micro btn-raised mdi-content-create"></button>	                                    
+	                                	<input type="hidden" name="user_id" id="user_id" value="${usuario.userId}" class="btn btn-primary"/>	                                	
+	                                	<button type="submit" name="action" id="action1" value="${usuario.userId}" class="btn btn-default btn-fab btn-fab-micro btn-raised mdi-content-create"></button>	                                    
 	                                </div>
 	                                <div class="row-content">
 	                                    <div class="least-content togglebutton">
 	                                       <label><input type="checkbox" checked=""></label>
 	                                    </div>
-	                                    <h4 class="list-group-item-heading-users">${usuario.getNombre()}</h4>
-	                                    <p class="list-group-item-text-users">${usuario.getRol().getRoleName()}</p>
+	                                    <h4 class="list-group-item-heading-users">${usuario.nombre}</h4>
+	                                    <p class="list-group-item-text-users">${usuario.rol.roleName}</p>
 	                                </div>
 	                            </div>
 	                            <div class="list-group-separator-users"></div>
@@ -91,7 +92,7 @@
 		</div>            
 	</div><!-- /.center -->
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/resources/bootstrap/js/ripples.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/bootstrap/js/material.min.js"></script> 

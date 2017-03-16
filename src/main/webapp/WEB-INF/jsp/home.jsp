@@ -12,6 +12,15 @@
         <link href="${pageContext.request.contextPath}/resources/bootstrap/css/ripples.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/bootstrap/css/custom.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap-datepicker.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" rel="stylesheet">
+        
+        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.11.3.min.js">
+	</script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js">
+	</script>
+        <script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/ajax/utilerias.js"></script>
+        <script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/resources/ajax/ajax-consultaGeneral.js"></script>
+        
         <!-- font Awesome -->
         <link href="${pageContext.request.contextPath}/resources/bootstrap/fonts/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Google font -->
@@ -27,6 +36,22 @@
     <%@ include file="/WEB-INF/jsp/menu.jsp"%>
     
 <script>
+$dr=jQuery.noConflict();
+$dr(document).ready(function() {
+    $dr('#tablaGeneral').DataTable({
+        "language": {
+            "lengthMenu": "Despliega _MENU_  registros por página",
+            "zeroRecords": "No se encontraron registros",
+            "info": "Mostrando página _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "search": "Buscar",
+            "oPaginate":{sFirst:"First",sLast:"Last",sNext:"Siguiente",sPrevious:"Anterior"},
+            "infoFiltered": "(filtrado de _MAX_ registros totales)"
+            
+        }
+    } );
+} );
+
 function envia(page) {
 	window.location.replace("<%=request.getContextPath()%>"+page);
 }
@@ -42,14 +67,14 @@ function envia(page) {
                 <h1 class="header">Reporte General</h1>
                 <div class="panel panel-primary">
                 	<div class="panel-heading">
-                        <h3 class="panel-title">20 Abril 2015 a 22 de Abril 2015</h3>
+                        <h3 class="panel-title" id="labelFecha"></h3>
                         <button id="button-float-table" class="btn btn-fab btn-fab-mini btn-raised btn-sm btn-material-amber"><i class="mdi-action-print"></i></button>
                     </div>
                 
                             
                     <div class="panel-body">
-                    	<div class="table-responsive">
-                          <table class="table table-bordered">
+                    	<div class="table-responsive" id="divTable">
+                          <table id="tablaGeneral" class="table table-bordered order-column">
                             <thead>
                               <tr>
                                 <th>Visitados</th>
@@ -67,13 +92,6 @@ function envia(page) {
                                 <td></td>
                                 <td></td>
                               </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                              </tr>
                               
                             </tbody>
                           </table>
@@ -85,12 +103,12 @@ function envia(page) {
    		 	 <div class="panel panel-primary">
                     <div class="panel-body">
                     	<div class="input-daterange input-group" id="datepicker">
-                            <input type="text" class="input-sm form-control floating-label" name="start" placeholder="Desde" />
+                            <input type="text" class="input-sm form-control floating-label" name="start" id= "fechaInicio" placeholder="Desde" />
                             <span class="input-group-addon">a</span>
-                            <input type="text" class="input-sm form-control floating-label" name="end" placeholder="Hasta"/>
+                            <input type="text" class="input-sm form-control floating-label" name="end" id= "fechaFinal"  placeholder="Hasta"/>
                 		</div>
                         <div class="text-center">
-                <button id="" class="btn btn-fab btn-fab-micro btn-raised btn-sm btn-primary"><i class="mdi-content-forward"></i></button>
+                <button id="buscar" class="btn btn-fab btn-fab-micro btn-raised btn-sm btn-primary"><i class="mdi-content-forward flechacen"></i></button>
 						</div>
                     </div>
              </div>
@@ -102,7 +120,7 @@ function envia(page) {
 		</div>            
 	</div><!-- /.center -->
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/resources/bootstrap/js/ripples.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/bootstrap/js/material.min.js"></script>

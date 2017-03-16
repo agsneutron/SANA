@@ -28,7 +28,7 @@
 	
 	<import resource="jasper-views.xml" />
 	<!-- para generación de reportes -->
-	<bean id="applicationContextProvder"
+	<bean id="applicationContextProvider"
                         class="com.sanaTF.model.ApplicationContextProvider"/>
 	
 	<bean id="propertyConfigurer"
