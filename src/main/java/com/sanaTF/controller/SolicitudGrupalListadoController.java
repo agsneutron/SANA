@@ -70,10 +70,8 @@ public class SolicitudGrupalListadoController {
 			rs.close();				
 			c.close();
 			
-			
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {			
 			e.printStackTrace();
 		} 
 		
