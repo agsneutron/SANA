@@ -22,8 +22,8 @@ public class SAFIServiciosServiceLocator extends org.apache.axis.client.Service 
     }
 
     // Use to get a proxy class for SAFIServiciosSoap11
-    //private java.lang.String SAFIServiciosSoap11_address = "http://sanatusfinanzas.info:8080/microfin/services/endPointSafi,";
-    private java.lang.String SAFIServiciosSoap11_address = "http://192.168.10.22:8080/microfin/services/endPointSafi,";
+    private java.lang.String SAFIServiciosSoap11_address = "http://sanatusfinanzas.info:8082/microfin/services/endPointSafi,";
+    //private java.lang.String SAFIServiciosSoap11_address = "http://192.168.10.22:8080/microfin/services/endPointSafi,";
 
     public java.lang.String getSAFIServiciosSoap11Address() {
         return SAFIServiciosSoap11_address;

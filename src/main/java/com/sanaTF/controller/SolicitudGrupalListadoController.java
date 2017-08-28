@@ -49,7 +49,7 @@ public class SolicitudGrupalListadoController {
 		+ " left join dbsanatf.bachtable E on B.idCliente = E.ClienteId"
 		+ " left join dbsanatf.grupos F on B.idgrupo=F.idgrupo"
 		+ " left join dbsanatf.User G on G.User_id=B.idinspector"
-		+ " where C.nombre is not null"
+		+ " where C.nombre is not null and B.idgrupo > 0"
 		+ " and creditoIdRenovacionAumento not in (1,2)"
 		+ " and B.idgrupo is not null";
 		

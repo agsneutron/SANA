@@ -15,7 +15,8 @@
            <li><a href="#" onclick="envia('/home')">Reporte General</a></li>
             <li><a href="#"  onclick="envia('/cobradores')">Reporte por cobrador</a></li>
             <li><a href="#" onclick="envia('/solicitudes_listado')">Solicitudes</a></li>
-            <li><a href="#" onclick="envia('/solicitudgrupal_listado')">Grupos</a></li>
+            <li><a href="#" onclick="envia('/solicitudgrupal_listado')">Solicitud Grupal</a></li>
+            <li><a href="#" onclick="envia('/grupos_listado')">Grupos</a></li>
             <li><a href="#" onclick="envia('/promotores_ruta')">Ruta promotor</a></li>
             <li><a href="#" onclick="envia('/listausuarios')">Usuarios</a></li>
             <li><a href="logout">Salir</a></li>

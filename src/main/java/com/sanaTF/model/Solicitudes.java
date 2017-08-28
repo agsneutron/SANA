@@ -119,12 +119,17 @@ public class Solicitudes {
 	private String fotoComprobantePropiedad;
 	@Column
 	private String fotoSolicitudBuro;
+	@Column
+	private int idgrupo;
 	
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="idCliente", insertable=false, updatable=false)
 	private Clientes cliente;
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="idgrupo", insertable=false, updatable=false)
+	private Grupos grupo;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="negocioIdColonia", insertable=false, updatable=false)
@@ -189,7 +194,7 @@ public class Solicitudes {
 			String fotoComprobantePropiedad, String fotoSolicitudBuro, Clientes cliente, Colonias negocioColonia,
 			Municipios negocioMunicipio, EntidadFederativa negocioEntidadFederativa, Giro negocioGiro,
 			UsoRecursos creditoUsoRecursos, Renovacion creditoRenovacionAumento, TipoCredito creditoTipoCredito,
-			Usuarios usuario, Plazos plazo, FrecuenciaPagos frecuencia) {
+			Usuarios usuario, Plazos plazo, FrecuenciaPagos frecuencia,Grupos grupo) {
 		super();
 		this.idSolicitud = idSolicitud;
 		this.User_id = user_id;
@@ -250,6 +255,7 @@ public class Solicitudes {
 		this.Usuario = usuario;
 		this.Plazo = plazo;
 		this.Frecuencia = frecuencia;
+		this.grupo = grupo;
 	}
 
 	public int getIdSolicitud() {
@@ -723,6 +729,24 @@ public class Solicitudes {
 	public void setFrecuencia(FrecuenciaPagos frecuencia) {
 		this.Frecuencia = frecuencia;
 	}
+
+	public int getIdgrupo() {
+		return idgrupo;
+	}
+
+	public void setIdgrupo(int idgrupo) {
+		this.idgrupo = idgrupo;
+	}
+
+	public Grupos getGrupo() {
+		return grupo;
+	}
+
+	public void setGrupo(Grupos grupo) {
+		this.grupo = grupo;
+	}
+	
+	
 
 
 								    					

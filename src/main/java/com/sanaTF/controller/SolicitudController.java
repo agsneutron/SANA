@@ -51,6 +51,10 @@ import safisrv.ws.schemas.SAFIServiciosServiceLocator;
 import safisrv.ws.schemas.SolAltaClienteRequest;
 import safisrv.ws.schemas.SolAltaClienteResponse;
 
+import safisrv.ws.schemas.AltaGrupoWSRequest;
+import safisrv.ws.schemas.AltaGrupoWSResponse;
+
+
 
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -92,6 +96,7 @@ public class SolicitudController {
 	@RequestMapping(value="/solicitud.do", method=RequestMethod.POST)
 	public String doActions(HttpSession session,@ModelAttribute Solicitudes solicitud, BindingResult result, @RequestParam String action, Map<String, Object> map,HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String redirecciona ="solicitud";
+		String Error="";
 		boolean rolAdministrador = request.isUserInRole("Administrador");
 		boolean rolCaptura = request.isUserInRole("Captura");	
 		int idCliente=0;
@@ -109,26 +114,29 @@ public class SolicitudController {
 				break;
 			case "aceptar":
 				Mensajes mensaje = new Mensajes();
-				guardaAceptar(solicitud.getUser_id(),solicitud.getIdSolicitud(),solicitud);
 				Solicitudes searchedSolicitudes = solicitudesService.getSolicitudes(solicitud.getIdSolicitud());
-				idClienteSana = searchedSolicitudes.getCliente().getIdClienteSANA();
-				if (idClienteSana==0) {
-					request.setAttribute("scriptError","alertify.alert('entra');");
-					mensaje=guardaAltaClienteSolicitud(solicitud);
-					request.setAttribute("scriptError","alertify.alert('pasa alta cliente');");
-					idCliente = mensaje.getIdSolicitud();
-					if (idCliente != -1) {
-						guardaidClienteSANA(idCliente, searchedSolicitudes);						
-						request.setAttribute("scriptError","alertify.alert('" + guardaSolicitudCredito(solicitud,idCliente) + "');");
-					    
+				Error=guardaAceptar(solicitud.getUser_id(),solicitud.getIdSolicitud(),solicitud);
+				if (Error==""){
+					idClienteSana = searchedSolicitudes.getCliente().getIdClienteSANA();
+					if (idClienteSana==0) {
+						request.setAttribute("scriptError","alertify.alert('entra');");
+						mensaje=guardaAltaClienteSolicitud(solicitud);
+						request.setAttribute("scriptError","alertify.alert('pasa alta cliente');");
+						idCliente = mensaje.getIdSolicitud();
+						if (idCliente != -1) {
+							guardaidClienteSANA(idCliente, searchedSolicitudes);						
+							request.setAttribute("scriptError","alertify.alert('" + guardaSolicitudCredito(solicitud,idCliente) + "');");
+						    
+						}else{
+							request.setAttribute("scriptError","alertify.alert('" + mensaje.getMensaje() + "');");
+						}
 					}else{
-						request.setAttribute("scriptError","alertify.alert('" + mensaje.getMensaje() + "');");
+						idCliente=idClienteSana;
+						request.setAttribute("scriptError","alertify.alert('" + guardaSolicitudCredito(solicitud,idCliente) + "');");
 					}
 				}else{
-					idCliente=idClienteSana;
-					request.setAttribute("scriptError","alertify.alert('" + guardaSolicitudCredito(solicitud,idCliente) + "');");
+					request.setAttribute("scriptError","alertify.alert('"+ Error +", Debe Capturar todos los datos requeridos');");
 				}
-				
 				map.put("solicitud", searchedSolicitudes);
 				map.put("idgrupo", perteneceGrupo(solicitud.getIdSolicitud()));
 				map.put("cobradores",listaCobradores());
@@ -358,33 +366,76 @@ public class SolicitudController {
 		return lista;
 	}
 	
-	public void guardaAceptar(int userId, int idSolicitud, Solicitudes solicitud){		
+	public String guardaAceptar(int userId, int idSolicitud, Solicitudes solicitud){
+		String Error = "";
 		String query="update solicitudes set User_Id = " + userId
 					+ ", estatus = 1"
 					+ " where idSolicitud = " + idSolicitud;
 		
-		String queryCliente="update clientes set titulo = '" + solicitud.getCliente().getTitulo() + "'" 
-				+ ", direccionOficial = '" + solicitud.getCliente().getDireccionOficial() + "'" 
-				+ ", numeroIdentificacion = '" + solicitud.getCliente().getNumeroIdentificacion() + "'" 
-				+ ", idTipoIdentificacion =  " + solicitud.getCliente().getIdTipoIdentificacion()
-				+ ", identificacionOficial = '" + solicitud.getCliente().getIdentificacionOficial() + "'"
-				+ ", idTipoDireccion =  " + solicitud.getCliente().getIdTipoDireccion()
-				+ " where idCliente = " + solicitud.getIdCliente();
+		if (solicitud.getCliente().getTitulo()==null){
+			Error = "Debe capturar el tÃ­tulo";
+		}else if(solicitud.getCliente().getDireccionOficial()==null){
+			Error = "Debe indicar si la direcciÃ³n es oficial";
+		}
+		else if(solicitud.getCliente().getNumeroIdentificacion()==null){
+			Error = "Debe capturar el nÃºmero de identificaciÃ³n";		
+		}
+		else if(solicitud.getCliente().getIdTipoIdentificacion()==0){
+			Error = "Debe indicar el tipo de identificaciÃ³n";
+		}
+		else if(solicitud.getCliente().getIdentificacionOficial()==null){
+			Error = "Debe indicar si la identificaciÃ³n es oficial";
+		}
+		else if(solicitud.getCliente().getIdTipoDireccion()==0){
+			Error = "Debe indicar el tipo de direcciÃ³n";
+		}
+		else if(solicitud.getCliente().getCurp()==null){
+			Error = "Debe capturar la CURP";
+		}
+		else if(solicitud.getCliente().getRfc()==null ){
+			Error = "Debe capturar el RFC";
+		}
+		else if(solicitud.getCliente().getTelefonolParticular()==null ){
+			Error = "Debe capturar el telÃ©fono particular";	
+		}
+		else if(solicitud.getCliente().getTelefonoCelular()==null ){
+			Error = "Debe capturar el telÃ©fono celular";
+		}
+		else if(solicitud.getCliente().getMail()==null ){
+			Error = "Debe capturar el correo electÃ³nico";
+		}
 		
-		DataSource ds = (DataSource)ApplicationContextProvider.getApplicationContext().getBean("dataSource");
-		Connection c;	    	
-		try {
-			c = ds.getConnection();
-			Statement stmt = c.createStatement();
-			stmt.execute(query);
-			stmt.execute(queryCliente);
-			c.close();
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 		
-				
+		if (Error ==""){
+			String queryCliente="update clientes set titulo = '" + solicitud.getCliente().getTitulo() + "'" 
+					+ ", direccionOficial = '" + solicitud.getCliente().getDireccionOficial() + "'" 
+					+ ", numeroIdentificacion = '" + solicitud.getCliente().getNumeroIdentificacion() + "'" 
+					+ ", idTipoIdentificacion =  " + solicitud.getCliente().getIdTipoIdentificacion()
+					+ ", identificacionOficial = '" + solicitud.getCliente().getIdentificacionOficial() + "'"
+					+ ", idTipoDireccion =  " + solicitud.getCliente().getIdTipoDireccion()
+					+ ", Curp =  '" + solicitud.getCliente().getCurp()  + "'"
+					+ ", Rfc =  '" + solicitud.getCliente().getRfc()  + "'"
+					+ ", telefonolParticular =  '" + solicitud.getCliente().getTelefonolParticular()  + "'"
+					+ ", telefonoCelular =  '" + solicitud.getCliente().getTelefonoCelular()  + "'"
+					+ ", mail =  '" + solicitud.getCliente().getMail()  + "'"
+					+ " where idCliente = " + solicitud.getIdCliente();
+			
+			DataSource ds = (DataSource)ApplicationContextProvider.getApplicationContext().getBean("dataSource");
+			Connection c;	    	
+			try {
+				c = ds.getConnection();
+				Statement stmt = c.createStatement();
+				stmt.execute(query);
+				stmt.execute(queryCliente);
+				c.close();
+	
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				Error= "OcurriÃ³ el siguiente error en el registro de Clientes : " + e.getMessage() ;
+				System.out.println("Error al dar de alta al cliente: " + e.getMessage() + " titulo: " + solicitud.getCliente().getTitulo());
+				e.printStackTrace();
+			} 
+		}
+		return Error;		
 	}
 	
 	
@@ -408,6 +459,27 @@ public class SolicitudController {
 		} 		
 				
 	}
+	
+	public void guardaCreditoSafi(String idCreditoSafi, Solicitudes solicitud){		
+		
+		String querySolicitud="update solicitudes set noCreditoSafi = '" + idCreditoSafi
+				+ "' where idSolicitud = " + solicitud.getIdSolicitud();
+		
+		DataSource ds = (DataSource)ApplicationContextProvider.getApplicationContext().getBean("dataSource");
+		Connection c;	    	
+		try {
+			c = ds.getConnection();
+			Statement stmt = c.createStatement();			
+			stmt.execute(querySolicitud);
+			c.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 		
+				
+	}
+	
 	
 	
 	public Integer perteneceGrupo(int idSolicitud){		
@@ -439,6 +511,34 @@ public class SolicitudController {
 		return esgrupo;
 	}
 	
+	public Integer obtenIdMunicipioSafi(int idCliente){	
+		String query="select  municipios.MunicipioID from clientes,municipios"
+				+ " where clientes.idMunicipio=municipios.id"
+				+ " and clientes.entidadFederativaNacimiento = municipios.estado_id"
+				+ " and clientes.idCliente=" + idCliente;
+		
+		DataSource ds = (DataSource)ApplicationContextProvider.getApplicationContext().getBean("dataSource");
+		Connection c;
+		int municipioID=0;
+		try {
+			c = ds.getConnection();
+			Statement stmt = c.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while (rs.next()) {
+				municipioID=rs.getInt("MunicipioID");
+			}
+			rs.close();				
+			c.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 		
+			
+		return municipioID;
+	}
+	
 	public void guardaRechazar(int idSolicitud){		
 		String query="update solicitudes set estatus = 0"
 					+ " where idSolicitud = " + idSolicitud;
@@ -465,6 +565,7 @@ public class SolicitudController {
 		SAFIServiciosServiceLocator locator = new SAFIServiciosServiceLocator();
 		SAFIServicios servicio;
 		
+		
 		Calendar c = new GregorianCalendar();
 		String dia = Integer.toString(c.get(Calendar.DATE));
 		String mes = Integer.toString(c.get(Calendar.MONTH)+1);
@@ -478,15 +579,18 @@ public class SolicitudController {
 		mensaje.setMensaje("");
 		mensaje.setIdSolicitud(-1);
 		
+		
+		
 		try {
 			servicio = locator.getSAFIServiciosSoap11();
 			SolAltaClienteRequest req = new SolAltaClienteRequest();
 			
-			/*para cambiar notación científica a decimal*/
+			/*para cambiar notaciï¿½n cientï¿½fica a decimal*/
 			BigDecimal d1 = new BigDecimal(String.valueOf(S.getNegocioGiro().getIdActividadBMX()));
 			String claveBMX = d1.toPlainString();
 			BigDecimal d2 = new BigDecimal(String.valueOf(S.getNegocioGiro().getIdActividadFR()));
 			String claveFR = d2.toPlainString();
+			int municipioID=obtenIdMunicipioSafi(S.getCliente().getIdCliente());
 			
 		/*1*/	req.setActividadBMX(claveBMX);//(String.valueOf(S.getNegocioGiro().getIdActividadBMX()));
 		/*2*/	req.setActividadFR(claveFR); //(String.valueOf(S.getNegocioGiro().getIdActividadFR()));
@@ -513,11 +617,11 @@ public class SolicitudController {
 		/*23*/	req.setFolioIdentiConyuge(S.getCliente().getNumeroIdentificacion());
 		/*24*/	req.setLocalidad("1");
 		/*25*/	req.setMail(S.getCliente().getMail());
-		/*26*/	req.setMunicipio(String.valueOf(S.getCliente().getIdMunicipio()));
+		/*26*/	req.setMunicipio(String.valueOf(municipioID));
 		/*27*/	req.setNacionalidad(S.getCliente().getNacionalidad());
 		/*28*/	req.setNacionalidadConyuge("N");
 		/*29*/	req.setNumero("0");
-		/*30*/	req.setNumeroDireccion(S.getCliente().getNumeroExterior());  //no sé que sea
+		/*30*/	req.setNumeroDireccion(S.getCliente().getNumeroExterior());  //no sï¿½ que sea
 		/*31*/	req.setNumIdentificacion(S.getCliente().getNumeroIdentificacion());
 		/*32*/	req.setOficial(S.getCliente().getDireccionOficial());
 		/*33*/	req.setPaisNacimiento(String.valueOf(S.getCliente().getPaisNacimiento()));
@@ -530,7 +634,7 @@ public class SolicitudController {
 		/*39*/	req.setPromotorInicial("1"); //req.setPromotorInicial(String.valueOf(S.getUser_id()));
 		/*40*/	req.setRFC(S.getCliente().getRfc());
 		/*41*/	req.setRFCConyuge("XXXXXXXXXXXXX");
-		/*42*/	req.setSectorGeneral("31");  // empresas, catálogo de sectores
+		/*42*/	req.setSectorGeneral("31");  // empresas, catï¿½logo de sectores
 		/*43*/	req.setSegundoNombre("");
 		/*44*/	req.setSegundoNombreConyuge("xxxxx");
 		/*45*/	req.setSexo(S.getCliente().getSexo());
@@ -538,7 +642,7 @@ public class SolicitudController {
 		/*47*/	req.setTelefono(S.getCliente().getTelefonoCelular());
 		/*48*/	req.setTercerNombre(""); 
 		/*49*/	req.setTercerNombreConyuge("XXXX");
-		/*50*/	req.setTipoDireccion(String.valueOf(S.getCliente().getIdTipoDireccion()));    //catálogo tipo de dirección
+		/*50*/	req.setTipoDireccion(String.valueOf(S.getCliente().getIdTipoDireccion()));    //catï¿½logo tipo de direcciï¿½n
 		/*51*/	req.setTipoIdentiConyuge("1");
 		/*52*/	req.setTipoIdentificacion(String.valueOf(S.getCliente().getIdTipoIdentificacion()));
 		/*53*/	req.setTitulo(S.getCliente().getTitulo());
@@ -588,19 +692,19 @@ public String guardaSolicitudCredito(@ModelAttribute Solicitudes solicitud,int c
 			
 		/*1*/	req.setClaveUsuario(S.getUsuario().getUsuario());
 		/*2*/	req.setClienteID(String.valueOf(clienteID));
-		/*3*/	req.setCuentaCLABE(" "); // de dónde se toma la cuenta clave
+		/*3*/	req.setCuentaCLABE(" "); // de dï¿½nde se toma la cuenta clave
 		/*4*/	req.setDestinoCredito(String.valueOf(S.getCreditoUsoRecursos().getIdDestino())); //el uso de recursos es el destinodelcredito?
 		/*5*/	req.setDispositivo("android");
 		/*6*/	req.setFolio(S.getFolioSolicitud());
 		/*7*/	req.setMontoSolici(S.getCreditoMonto());
 		/*8*/	req.setNumeroCredito("0");
 		/*9*/	req.setPeriodicidad(String.valueOf(S.getFrecuencia().getClave_frecuencia_pago()));
-		/*10*/	req.setPlazo(String.valueOf(S.getCreditoPlazo()));  //dónde está el catálogo de plazos
+		/*10*/	req.setPlazo(String.valueOf(S.getCreditoPlazo()));  //dï¿½nde estï¿½ el catï¿½logo de plazos
 		/*11*/	req.setProductoCreditoID(String.valueOf(S.getCreditoIdTipoCredito()));  // el tipo de producto no se captura
 		/*12*/	req.setProspectoID("0");
-		/*13*/	req.setProyecto(S.getCreditoUsoRecursos().getNombre());  // proyecto al que está destinado el crédito? mandar el nombre de uso de recursos
-		/*14*/	req.setTipoCredito("N");  // que es producto y qué es tipo de crédito, tipo credito nuevo N
-		/*15*/	req.setTipoDispersion("C"); //el tipo de dispersión no se captura
+		/*13*/	req.setProyecto(S.getCreditoUsoRecursos().getNombre());  // proyecto al que estï¿½ destinado el crï¿½dito? mandar el nombre de uso de recursos
+		/*14*/	req.setTipoCredito("N");  // que es producto y quï¿½ es tipo de crï¿½dito, tipo credito nuevo N
+		/*15*/	req.setTipoDispersion("C"); //el tipo de dispersiï¿½n no se captura
 		/*16*/	req.setTipoPagoCapital("C");
 		String iDSolicitud="";
 			
@@ -611,6 +715,7 @@ public String guardaSolicitudCredito(@ModelAttribute Solicitudes solicitud,int c
 					respuesta = res.getMensajeRespuesta();
 					if (res.getCodigoRespuesta().compareTo("00")==0){
 						iDSolicitud=res.getSolicitudCreditoID();
+						guardaCreditoSafi(iDSolicitud,S);
 					}
 					System.out.println("respuesta: " + respuesta);					
 					

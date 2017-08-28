@@ -94,8 +94,6 @@ public class CobradoresConsolaController {
 		return regresa;
 	}
 	
-		
-	
 	
 	public String nombreUsuario(String userId){
 		String usuario = "";
@@ -145,7 +143,7 @@ public class CobradoresConsolaController {
 				+ " and fechaVisita between '" + fechaInicio + "' and '" + fechaFinal + "'"
 				+ " and B.User_id=C.User_id"
 				+ " and A.idCliente = D.idCliente"
-				+ " and A.idCliente = E.ClienteId";
+				+ " and D.idClienteSANA = E.ClienteId";
 
 				
 		

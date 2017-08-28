@@ -135,7 +135,7 @@
             <td>
             	<div class="form-group">
             	<label class="form-text" for="exampleInputEmail1">CURP</label>
-                <form:input path="cliente.curp" class="form-control form-height" readonly="true"/>
+                <form:input path="cliente.curp" class="form-control form-height"/>
               	</div>
             </td>
           </tr>
@@ -144,25 +144,25 @@
             <td>
             	<div class="form-group">
             	<label class="form-text" class="form-text" for="exampleInputEmail1">RFC</label>
-                <form:input path="cliente.rfc" class="form-control form-height" readonly="true"/>
+                <form:input path="cliente.rfc" class="form-control form-height"/>
               	</div>
             </td>
             <td>
             	<div class="form-group">
             	<label class="form-text" for="exampleInputEmail1">Tel. Fijo</label>
-                <form:input path="cliente.telefonolParticular" class="form-control form-height" readonly="true"/>
+                <form:input path="cliente.telefonolParticular" class="form-control form-height"/>
               	</div>
             </td>
             <td>
             	<div class="form-group">
             	<label class="form-text" for="exampleInputEmail1">Tel. Celular</label>
-                <form:input path="cliente.telefonoCelular" class="form-control form-height" readonly="true"/>
+                <form:input path="cliente.telefonoCelular" class="form-control form-height"/>
               	</div>
             </td>
             <td colspan="2">
             	<div class="form-group">
             	<label class="form-text" for="exampleInputEmail1">E-mail</label>
-                <form:input path="cliente.mail" class="form-control form-height" readonly="true"/>
+                <form:input path="cliente.mail" class="form-control form-height"/>
               	</div>
             </td>
           </tr>

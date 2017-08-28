@@ -109,7 +109,7 @@
 	                                <td>${solicitud.estatus}</td>
 	                                <td>${solicitud.montoCredito}</td>
 	                                <td>${solicitud.adeudo}</td>
-	                                <td><a href="solicitud?Folio=${solicitud.idSolicitud}">Ver</a></td>
+	                                <td><a href="solicitud_grupal?Folio=${solicitud.idSolicitud}">Ver</a></td>
 	                              </tr>
 	                        </c:forEach>
 	                        

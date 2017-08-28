@@ -506,31 +506,31 @@ public class AjaxController {
 	public String ruta_optima(double[][] d)
 	{
 	  /*ALGORITMO DE OPTIMIZACION DE RUTA EN JAVASCRIPT 
-	  ///José Enrique González Cornejo, 01/05/2009
+	  ///Josï¿½ Enrique Gonzï¿½lez Cornejo, 01/05/2009
 	  ///http://www.docirs.cl/ruta_optima.htm
 	  ///http://www.docirs.cl/simulacion_aleatoria_ruta_optima.asp
-	  ///La función devuelve una cadena con un recorrido óptimo,
-	  ///desde el punto de vista, del Método Por Tramos DocIRS 
+	  ///La funciï¿½n devuelve una cadena con un recorrido ï¿½ptimo,
+	  ///desde el punto de vista, del Mï¿½todo Por Tramos DocIRS 
 	  ///con la siguiente sintaxis: a1-->d[a1][a2]-->....,an-->d[an][1]-->a1
-	  ///Se asume que vienen parámetros globales: numero_nodos, la matriz d[i][j]    cargada con sus correspondientes valores
+	  ///Se asume que vienen parï¿½metros globales: numero_nodos, la matriz d[i][j]    cargada con sus correspondientes valores
 	*/
 		
 
 	 int numero_nodos = d.length;
-	 int[] ruta = new int[numero_nodos+1]; /// se guardará el orden de recorrido de la ruta
-	 double[] metros = new double[numero_nodos]; /// se guardará el orden de recorrido de la ruta en metros
+	 int[] ruta = new int[numero_nodos+1]; /// se guardarï¿½ el orden de recorrido de la ruta
+	 double[] metros = new double[numero_nodos]; /// se guardarï¿½ el orden de recorrido de la ruta en metros
 	 
 	 int[] donde=new int[numero_nodos]; /// Almacena el punto donde estamos situados
-	 double[] minimo=new double[numero_nodos]; /// Almacena el valor mínimo d[i][j] seleccionado
-	 int[] v=new int[numero_nodos+1]; /// Rotulación de los nodos. Por simplicacion del algoritmo v(j)=j
+	 double[] minimo=new double[numero_nodos]; /// Almacena el valor mï¿½nimo d[i][j] seleccionado
+	 int[] v=new int[numero_nodos+1]; /// Rotulaciï¿½n de los nodos. Por simplicacion del algoritmo v(j)=j
 	 int kkk=0; //Contador
-	 double MMM=0;   //Comienza numero gande, se Almacena Mínimo
+	 double MMM=0;   //Comienza numero gande, se Almacena Mï¿½nimo
 	 String restriccion=","; //Cadena donde se van guardando los nodos ya seleccionados.
 	 int m; //iterador local
 	 int i; //iterador local
 	 int j; //iterador local
 	 String nodo_doble;  //variable auxiliar para limpiar la duplicacion de rotulos en los tramos
-	 String ss; //cadena resultante que contiene la serie de la ruta óptima ,a1,a2,a3,.....,an,a1
+	 String ss; //cadena resultante que contiene la serie de la ruta ï¿½ptima ,a1,a2,a3,.....,an,a1
 	 
 	 int punto1=0;
 	 int punto2=0;
@@ -692,7 +692,7 @@ public class AjaxController {
 				+ " where A.idCliente = B.idCliente and B.idCliente in (" + clientes + ")"
 				+ " and B.User_id=C.User_id"
 				+ " and A.idCliente = D.idCliente"
-				+ " and A.idCliente = E.ClienteId";
+				+ " and D.idClienteSANA = E.ClienteId";
 
 				
 		
