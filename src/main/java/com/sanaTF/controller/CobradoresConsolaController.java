@@ -132,8 +132,8 @@ public class CobradoresConsolaController {
 		String cobro ="";
 		String circulo ="glyphicon-remove-circle cobro-no";
 		
-		String query="SELECT C.nombre as usuario,C.Usuario claveUsuario,D.idCliente, CONCAT(D.nombre,' ',D.apellidoPaterno,' ',D.apellidoMaterno) as cliente,"
-				+ " concat(B.horaDesde) as horaDesde,concat(B.horaHasta) horaHasta,E.MontoTotalExigible pagoCuota,A.pagoCobroRealizado,A.pagoMontoCobrado,A.descripcion,"
+		String query="SELECT A.id idPago, C.nombre as usuario,C.Usuario claveUsuario,D.idCliente, CONCAT(D.nombre,' ',D.apellidoPaterno,' ',D.apellidoMaterno) as cliente,"
+				+ " concat(B.horaDesde) as horaDesde,concat(B.horaHasta) horaHasta,round((MontototalExi*1.16),2) pagoCuota,A.pagoCobroRealizado,A.pagoMontoCobrado,A.descripcion,"
 				+ " B.negocioLatitud,B.negocioLongitud,"
 				+ " CONCAT(B.negocioCalle,' ',B.negocioNoExt,' ',(select nombre From colonias col where col.id = B.negocioIdColonia and col.estado_id = B.negocioIdEntidadFederativa ),"
 				+ " ' ',(Select nombre from municipios M where M.estado_id = B.negocioIdEntidadFederativa and M.id = B.negocioIdMunicipio)) direccion,"
@@ -141,8 +141,10 @@ public class CobradoresConsolaController {
 				+ " FROM dbsanatf.lugares_cobro A, dbsanatf.solicitudes B, dbsanatf.User C,dbsanatf.clientes D,dbsanatf.bachtable E"
 				+ " where A.idCliente = B.idCliente and B.user_id = " + userId
 				+ " and fechaVisita between '" + fechaInicio + "' and '" + fechaFinal + "'"
+				+ " and A.pagoEnviado = 0"
 				+ " and B.User_id=C.User_id"
 				+ " and A.idCliente = D.idCliente"
+				+ " and A.creditoid=E.CreditoId"
 				+ " and D.idClienteSANA = E.ClienteId";
 
 				
@@ -161,7 +163,7 @@ public class CobradoresConsolaController {
 					circulo ="glyphicon-remove-circle cobro-no";
 				}
 				TablaRuta R=new TablaRuta(rs.getInt("idCliente"),rs.getString("cliente"),rs.getString("horaDesde"),rs.getString("horaHasta"),rs.getDouble("pagoCuota"),cobro,rs.getDouble("pagoMontoCobrado"),rs.getString("descripcion"),circulo,rs.getDouble("negocioLatitud"),rs.getDouble("negociolongitud"),
-						rs.getString("direccion"),rs.getString("negocioNombre"),rs.getString("CreditoId"),rs.getString("folioSolicitud"),rs.getString("claveUsuario"));
+						rs.getString("direccion"),rs.getString("negocioNombre"),rs.getString("CreditoId"),rs.getString("folioSolicitud"),rs.getString("claveUsuario"),rs.getInt("idPago"));
 				lista.add(R);
 				
 			}

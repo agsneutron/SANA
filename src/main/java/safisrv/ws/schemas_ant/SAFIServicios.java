@@ -5,7 +5,7 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package safisrv.ws.schemas;
+package safisrv.ws.schemas_ant;
 
 public interface SAFIServicios extends java.rmi.Remote {
     public safisrv.ws.schemas.AltaSolicitudGrupalWSResponse altaSolicitudGrupalWS(safisrv.ws.schemas.AltaSolicitudGrupalWSRequest altaSolicitudGrupalWSRequest) throws java.rmi.RemoteException;

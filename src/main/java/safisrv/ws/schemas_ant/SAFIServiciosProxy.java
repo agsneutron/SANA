@@ -1,6 +1,6 @@
-package safisrv.ws.schemas;
+package safisrv.ws.schemas_ant;
 
-public class SAFIServiciosProxy implements safisrv.ws.schemas.SAFIServicios {
+public abstract class SAFIServiciosProxy implements safisrv.ws.schemas.SAFIServicios {
   private String _endpoint = null;
   private safisrv.ws.schemas.SAFIServicios sAFIServicios = null;
   
@@ -42,12 +42,6 @@ public class SAFIServiciosProxy implements safisrv.ws.schemas.SAFIServicios {
     if (sAFIServicios == null)
       _initSAFIServiciosProxy();
     return sAFIServicios;
-  }
-  
-  public safisrv.ws.schemas.AltaSolicitudGrupalWSResponse altaSolicitudGrupalWS(safisrv.ws.schemas.AltaSolicitudGrupalWSRequest altaSolicitudGrupalWSRequest) throws java.rmi.RemoteException{
-    if (sAFIServicios == null)
-      _initSAFIServiciosProxy();
-    return sAFIServicios.altaSolicitudGrupalWS(altaSolicitudGrupalWSRequest);
   }
   
   public safisrv.ws.schemas.PagoCreditoResponse pagoCredito(safisrv.ws.schemas.PagoCreditoRequest pagoCreditoRequest) throws java.rmi.RemoteException{

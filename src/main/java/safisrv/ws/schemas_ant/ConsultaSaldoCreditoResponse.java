@@ -1,126 +1,126 @@
 /**
- * PagoCreditoResponse.java
+ * ConsultaSaldoCreditoResponse.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package safisrv.ws.schemas;
+package safisrv.ws.schemas_ant;
 
-public class PagoCreditoResponse  implements java.io.Serializable {
-    private java.lang.String creditoID;
+public class ConsultaSaldoCreditoResponse  implements java.io.Serializable {
+    private java.lang.String saldoTotal;
 
-    private java.lang.String numTransaccion;
+    private java.lang.String saldoExigibleDia;
 
-    private java.lang.String saldoExigible;
+    private java.lang.String proyeccion;
 
-    private java.lang.String saldoTotalActual;
+    private java.lang.String saldoFinalPlazo;
 
     private java.lang.String codigoRespuesta;
 
     private java.lang.String mensajeRespuesta;
 
-    public PagoCreditoResponse() {
+    public ConsultaSaldoCreditoResponse() {
     }
 
-    public PagoCreditoResponse(
-           java.lang.String creditoID,
-           java.lang.String numTransaccion,
-           java.lang.String saldoExigible,
-           java.lang.String saldoTotalActual,
+    public ConsultaSaldoCreditoResponse(
+           java.lang.String saldoTotal,
+           java.lang.String saldoExigibleDia,
+           java.lang.String proyeccion,
+           java.lang.String saldoFinalPlazo,
            java.lang.String codigoRespuesta,
            java.lang.String mensajeRespuesta) {
-           this.creditoID = creditoID;
-           this.numTransaccion = numTransaccion;
-           this.saldoExigible = saldoExigible;
-           this.saldoTotalActual = saldoTotalActual;
+           this.saldoTotal = saldoTotal;
+           this.saldoExigibleDia = saldoExigibleDia;
+           this.proyeccion = proyeccion;
+           this.saldoFinalPlazo = saldoFinalPlazo;
            this.codigoRespuesta = codigoRespuesta;
            this.mensajeRespuesta = mensajeRespuesta;
     }
 
 
     /**
-     * Gets the creditoID value for this PagoCreditoResponse.
+     * Gets the saldoTotal value for this ConsultaSaldoCreditoResponse.
      * 
-     * @return creditoID
+     * @return saldoTotal
      */
-    public java.lang.String getCreditoID() {
-        return creditoID;
+    public java.lang.String getSaldoTotal() {
+        return saldoTotal;
     }
 
 
     /**
-     * Sets the creditoID value for this PagoCreditoResponse.
+     * Sets the saldoTotal value for this ConsultaSaldoCreditoResponse.
      * 
-     * @param creditoID
+     * @param saldoTotal
      */
-    public void setCreditoID(java.lang.String creditoID) {
-        this.creditoID = creditoID;
+    public void setSaldoTotal(java.lang.String saldoTotal) {
+        this.saldoTotal = saldoTotal;
     }
 
 
     /**
-     * Gets the numTransaccion value for this PagoCreditoResponse.
+     * Gets the saldoExigibleDia value for this ConsultaSaldoCreditoResponse.
      * 
-     * @return numTransaccion
+     * @return saldoExigibleDia
      */
-    public java.lang.String getNumTransaccion() {
-        return numTransaccion;
+    public java.lang.String getSaldoExigibleDia() {
+        return saldoExigibleDia;
     }
 
 
     /**
-     * Sets the numTransaccion value for this PagoCreditoResponse.
+     * Sets the saldoExigibleDia value for this ConsultaSaldoCreditoResponse.
      * 
-     * @param numTransaccion
+     * @param saldoExigibleDia
      */
-    public void setNumTransaccion(java.lang.String numTransaccion) {
-        this.numTransaccion = numTransaccion;
+    public void setSaldoExigibleDia(java.lang.String saldoExigibleDia) {
+        this.saldoExigibleDia = saldoExigibleDia;
     }
 
 
     /**
-     * Gets the saldoExigible value for this PagoCreditoResponse.
+     * Gets the proyeccion value for this ConsultaSaldoCreditoResponse.
      * 
-     * @return saldoExigible
+     * @return proyeccion
      */
-    public java.lang.String getSaldoExigible() {
-        return saldoExigible;
+    public java.lang.String getProyeccion() {
+        return proyeccion;
     }
 
 
     /**
-     * Sets the saldoExigible value for this PagoCreditoResponse.
+     * Sets the proyeccion value for this ConsultaSaldoCreditoResponse.
      * 
-     * @param saldoExigible
+     * @param proyeccion
      */
-    public void setSaldoExigible(java.lang.String saldoExigible) {
-        this.saldoExigible = saldoExigible;
+    public void setProyeccion(java.lang.String proyeccion) {
+        this.proyeccion = proyeccion;
     }
 
 
     /**
-     * Gets the saldoTotalActual value for this PagoCreditoResponse.
+     * Gets the saldoFinalPlazo value for this ConsultaSaldoCreditoResponse.
      * 
-     * @return saldoTotalActual
+     * @return saldoFinalPlazo
      */
-    public java.lang.String getSaldoTotalActual() {
-        return saldoTotalActual;
+    public java.lang.String getSaldoFinalPlazo() {
+        return saldoFinalPlazo;
     }
 
 
     /**
-     * Sets the saldoTotalActual value for this PagoCreditoResponse.
+     * Sets the saldoFinalPlazo value for this ConsultaSaldoCreditoResponse.
      * 
-     * @param saldoTotalActual
+     * @param saldoFinalPlazo
      */
-    public void setSaldoTotalActual(java.lang.String saldoTotalActual) {
-        this.saldoTotalActual = saldoTotalActual;
+    public void setSaldoFinalPlazo(java.lang.String saldoFinalPlazo) {
+        this.saldoFinalPlazo = saldoFinalPlazo;
     }
 
 
     /**
-     * Gets the codigoRespuesta value for this PagoCreditoResponse.
+     * Gets the codigoRespuesta value for this ConsultaSaldoCreditoResponse.
      * 
      * @return codigoRespuesta
      */
@@ -130,7 +130,7 @@ public class PagoCreditoResponse  implements java.io.Serializable {
 
 
     /**
-     * Sets the codigoRespuesta value for this PagoCreditoResponse.
+     * Sets the codigoRespuesta value for this ConsultaSaldoCreditoResponse.
      * 
      * @param codigoRespuesta
      */
@@ -140,7 +140,7 @@ public class PagoCreditoResponse  implements java.io.Serializable {
 
 
     /**
-     * Gets the mensajeRespuesta value for this PagoCreditoResponse.
+     * Gets the mensajeRespuesta value for this ConsultaSaldoCreditoResponse.
      * 
      * @return mensajeRespuesta
      */
@@ -150,7 +150,7 @@ public class PagoCreditoResponse  implements java.io.Serializable {
 
 
     /**
-     * Sets the mensajeRespuesta value for this PagoCreditoResponse.
+     * Sets the mensajeRespuesta value for this ConsultaSaldoCreditoResponse.
      * 
      * @param mensajeRespuesta
      */
@@ -160,8 +160,8 @@ public class PagoCreditoResponse  implements java.io.Serializable {
 
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof PagoCreditoResponse)) return false;
-        PagoCreditoResponse other = (PagoCreditoResponse) obj;
+        if (!(obj instanceof ConsultaSaldoCreditoResponse)) return false;
+        ConsultaSaldoCreditoResponse other = (ConsultaSaldoCreditoResponse) obj;
         if (obj == null) return false;
         if (this == obj) return true;
         if (__equalsCalc != null) {
@@ -170,18 +170,18 @@ public class PagoCreditoResponse  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
-            ((this.creditoID==null && other.getCreditoID()==null) || 
-             (this.creditoID!=null &&
-              this.creditoID.equals(other.getCreditoID()))) &&
-            ((this.numTransaccion==null && other.getNumTransaccion()==null) || 
-             (this.numTransaccion!=null &&
-              this.numTransaccion.equals(other.getNumTransaccion()))) &&
-            ((this.saldoExigible==null && other.getSaldoExigible()==null) || 
-             (this.saldoExigible!=null &&
-              this.saldoExigible.equals(other.getSaldoExigible()))) &&
-            ((this.saldoTotalActual==null && other.getSaldoTotalActual()==null) || 
-             (this.saldoTotalActual!=null &&
-              this.saldoTotalActual.equals(other.getSaldoTotalActual()))) &&
+            ((this.saldoTotal==null && other.getSaldoTotal()==null) || 
+             (this.saldoTotal!=null &&
+              this.saldoTotal.equals(other.getSaldoTotal()))) &&
+            ((this.saldoExigibleDia==null && other.getSaldoExigibleDia()==null) || 
+             (this.saldoExigibleDia!=null &&
+              this.saldoExigibleDia.equals(other.getSaldoExigibleDia()))) &&
+            ((this.proyeccion==null && other.getProyeccion()==null) || 
+             (this.proyeccion!=null &&
+              this.proyeccion.equals(other.getProyeccion()))) &&
+            ((this.saldoFinalPlazo==null && other.getSaldoFinalPlazo()==null) || 
+             (this.saldoFinalPlazo!=null &&
+              this.saldoFinalPlazo.equals(other.getSaldoFinalPlazo()))) &&
             ((this.codigoRespuesta==null && other.getCodigoRespuesta()==null) || 
              (this.codigoRespuesta!=null &&
               this.codigoRespuesta.equals(other.getCodigoRespuesta()))) &&
@@ -199,17 +199,17 @@ public class PagoCreditoResponse  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
-        if (getCreditoID() != null) {
-            _hashCode += getCreditoID().hashCode();
+        if (getSaldoTotal() != null) {
+            _hashCode += getSaldoTotal().hashCode();
         }
-        if (getNumTransaccion() != null) {
-            _hashCode += getNumTransaccion().hashCode();
+        if (getSaldoExigibleDia() != null) {
+            _hashCode += getSaldoExigibleDia().hashCode();
         }
-        if (getSaldoExigible() != null) {
-            _hashCode += getSaldoExigible().hashCode();
+        if (getProyeccion() != null) {
+            _hashCode += getProyeccion().hashCode();
         }
-        if (getSaldoTotalActual() != null) {
-            _hashCode += getSaldoTotalActual().hashCode();
+        if (getSaldoFinalPlazo() != null) {
+            _hashCode += getSaldoFinalPlazo().hashCode();
         }
         if (getCodigoRespuesta() != null) {
             _hashCode += getCodigoRespuesta().hashCode();
@@ -223,31 +223,31 @@ public class PagoCreditoResponse  implements java.io.Serializable {
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(PagoCreditoResponse.class, true);
+        new org.apache.axis.description.TypeDesc(ConsultaSaldoCreditoResponse.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://safisrv/ws/schemas", ">PagoCreditoResponse"));
+        typeDesc.setXmlType(new javax.xml.namespace.QName("http://safisrv/ws/schemas", ">ConsultaSaldoCreditoResponse"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("creditoID");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "creditoID"));
+        elemField.setFieldName("saldoTotal");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "saldoTotal"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("numTransaccion");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "numTransaccion"));
+        elemField.setFieldName("saldoExigibleDia");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "saldoExigibleDia"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("saldoExigible");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "saldoExigible"));
+        elemField.setFieldName("proyeccion");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "proyeccion"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("saldoTotalActual");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "saldoTotalActual"));
+        elemField.setFieldName("saldoFinalPlazo");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "saldoFinalPlazo"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

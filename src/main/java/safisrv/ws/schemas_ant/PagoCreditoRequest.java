@@ -1,14 +1,18 @@
 /**
- * ConsultaSaldoCreditoRequest.java
+ * PagoCreditoRequest.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package safisrv.ws.schemas;
+package safisrv.ws.schemas_ant;
 
-public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
+public class PagoCreditoRequest  implements java.io.Serializable {
     private java.lang.String creditoID;
+
+    private java.lang.String monto;
+
+    private java.lang.String montoGL;
 
     private java.lang.String folio;
 
@@ -16,15 +20,19 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
     private java.lang.String dispositivo;
 
-    public ConsultaSaldoCreditoRequest() {
+    public PagoCreditoRequest() {
     }
 
-    public ConsultaSaldoCreditoRequest(
+    public PagoCreditoRequest(
            java.lang.String creditoID,
+           java.lang.String monto,
+           java.lang.String montoGL,
            java.lang.String folio,
            java.lang.String claveUsuario,
            java.lang.String dispositivo) {
            this.creditoID = creditoID;
+           this.monto = monto;
+           this.montoGL = montoGL;
            this.folio = folio;
            this.claveUsuario = claveUsuario;
            this.dispositivo = dispositivo;
@@ -32,7 +40,7 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the creditoID value for this ConsultaSaldoCreditoRequest.
+     * Gets the creditoID value for this PagoCreditoRequest.
      * 
      * @return creditoID
      */
@@ -42,7 +50,7 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the creditoID value for this ConsultaSaldoCreditoRequest.
+     * Sets the creditoID value for this PagoCreditoRequest.
      * 
      * @param creditoID
      */
@@ -52,7 +60,47 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the folio value for this ConsultaSaldoCreditoRequest.
+     * Gets the monto value for this PagoCreditoRequest.
+     * 
+     * @return monto
+     */
+    public java.lang.String getMonto() {
+        return monto;
+    }
+
+
+    /**
+     * Sets the monto value for this PagoCreditoRequest.
+     * 
+     * @param monto
+     */
+    public void setMonto(java.lang.String monto) {
+        this.monto = monto;
+    }
+
+
+    /**
+     * Gets the montoGL value for this PagoCreditoRequest.
+     * 
+     * @return montoGL
+     */
+    public java.lang.String getMontoGL() {
+        return montoGL;
+    }
+
+
+    /**
+     * Sets the montoGL value for this PagoCreditoRequest.
+     * 
+     * @param montoGL
+     */
+    public void setMontoGL(java.lang.String montoGL) {
+        this.montoGL = montoGL;
+    }
+
+
+    /**
+     * Gets the folio value for this PagoCreditoRequest.
      * 
      * @return folio
      */
@@ -62,7 +110,7 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the folio value for this ConsultaSaldoCreditoRequest.
+     * Sets the folio value for this PagoCreditoRequest.
      * 
      * @param folio
      */
@@ -72,7 +120,7 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the claveUsuario value for this ConsultaSaldoCreditoRequest.
+     * Gets the claveUsuario value for this PagoCreditoRequest.
      * 
      * @return claveUsuario
      */
@@ -82,7 +130,7 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the claveUsuario value for this ConsultaSaldoCreditoRequest.
+     * Sets the claveUsuario value for this PagoCreditoRequest.
      * 
      * @param claveUsuario
      */
@@ -92,7 +140,7 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the dispositivo value for this ConsultaSaldoCreditoRequest.
+     * Gets the dispositivo value for this PagoCreditoRequest.
      * 
      * @return dispositivo
      */
@@ -102,7 +150,7 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the dispositivo value for this ConsultaSaldoCreditoRequest.
+     * Sets the dispositivo value for this PagoCreditoRequest.
      * 
      * @param dispositivo
      */
@@ -112,8 +160,8 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof ConsultaSaldoCreditoRequest)) return false;
-        ConsultaSaldoCreditoRequest other = (ConsultaSaldoCreditoRequest) obj;
+        if (!(obj instanceof PagoCreditoRequest)) return false;
+        PagoCreditoRequest other = (PagoCreditoRequest) obj;
         if (obj == null) return false;
         if (this == obj) return true;
         if (__equalsCalc != null) {
@@ -125,6 +173,12 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
             ((this.creditoID==null && other.getCreditoID()==null) || 
              (this.creditoID!=null &&
               this.creditoID.equals(other.getCreditoID()))) &&
+            ((this.monto==null && other.getMonto()==null) || 
+             (this.monto!=null &&
+              this.monto.equals(other.getMonto()))) &&
+            ((this.montoGL==null && other.getMontoGL()==null) || 
+             (this.montoGL!=null &&
+              this.montoGL.equals(other.getMontoGL()))) &&
             ((this.folio==null && other.getFolio()==null) || 
              (this.folio!=null &&
               this.folio.equals(other.getFolio()))) &&
@@ -148,6 +202,12 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
         if (getCreditoID() != null) {
             _hashCode += getCreditoID().hashCode();
         }
+        if (getMonto() != null) {
+            _hashCode += getMonto().hashCode();
+        }
+        if (getMontoGL() != null) {
+            _hashCode += getMontoGL().hashCode();
+        }
         if (getFolio() != null) {
             _hashCode += getFolio().hashCode();
         }
@@ -163,13 +223,25 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(ConsultaSaldoCreditoRequest.class, true);
+        new org.apache.axis.description.TypeDesc(PagoCreditoRequest.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://safisrv/ws/schemas", ">ConsultaSaldoCreditoRequest"));
+        typeDesc.setXmlType(new javax.xml.namespace.QName("http://safisrv/ws/schemas", ">PagoCreditoRequest"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("creditoID");
         elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "creditoID"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("monto");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "monto"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("montoGL");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "montoGL"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

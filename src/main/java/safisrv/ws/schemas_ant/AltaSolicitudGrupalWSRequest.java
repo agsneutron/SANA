@@ -1,28 +1,22 @@
 /**
- * AltaSolicitudCreditoRequest.java
+ * AltaSolicitudGrupalWSRequest.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package safisrv.ws.schemas;
+package safisrv.ws.schemas_ant;
 
-public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
-    private java.lang.String prospectoID;
+public class AltaSolicitudGrupalWSRequest  implements java.io.Serializable {
+    private safisrv.ws.schemas.Integrante[] integrantes;
 
-    private java.lang.String clienteID;
+    private java.lang.String grupoID;
 
     private java.lang.String productoCreditoID;
-
-    private java.lang.String montoSolici;
 
     private java.lang.String periodicidad;
 
     private java.lang.String plazo;
-
-    private java.lang.String destinoCredito;
-
-    private java.lang.String proyecto;
 
     private java.lang.String tipoDispersion;
 
@@ -30,49 +24,35 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
     private java.lang.String tipoPagoCapital;
 
-    private java.lang.String tipoCredito;
-
-    private java.lang.String numeroCredito;
-
     private java.lang.String folio;
 
     private java.lang.String claveUsuario;
 
     private java.lang.String dispositivo;
 
-    public AltaSolicitudCreditoRequest() {
+    public AltaSolicitudGrupalWSRequest() {
     }
 
-    public AltaSolicitudCreditoRequest(
-           java.lang.String prospectoID,
-           java.lang.String clienteID,
+    public AltaSolicitudGrupalWSRequest(
+           safisrv.ws.schemas.Integrante[] integrantes,
+           java.lang.String grupoID,
            java.lang.String productoCreditoID,
-           java.lang.String montoSolici,
            java.lang.String periodicidad,
            java.lang.String plazo,
-           java.lang.String destinoCredito,
-           java.lang.String proyecto,
            java.lang.String tipoDispersion,
            java.lang.String cuentaCLABE,
            java.lang.String tipoPagoCapital,
-           java.lang.String tipoCredito,
-           java.lang.String numeroCredito,
            java.lang.String folio,
            java.lang.String claveUsuario,
            java.lang.String dispositivo) {
-           this.prospectoID = prospectoID;
-           this.clienteID = clienteID;
+           this.integrantes = integrantes;
+           this.grupoID = grupoID;
            this.productoCreditoID = productoCreditoID;
-           this.montoSolici = montoSolici;
            this.periodicidad = periodicidad;
            this.plazo = plazo;
-           this.destinoCredito = destinoCredito;
-           this.proyecto = proyecto;
            this.tipoDispersion = tipoDispersion;
            this.cuentaCLABE = cuentaCLABE;
            this.tipoPagoCapital = tipoPagoCapital;
-           this.tipoCredito = tipoCredito;
-           this.numeroCredito = numeroCredito;
            this.folio = folio;
            this.claveUsuario = claveUsuario;
            this.dispositivo = dispositivo;
@@ -80,47 +60,47 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the prospectoID value for this AltaSolicitudCreditoRequest.
+     * Gets the integrantes value for this AltaSolicitudGrupalWSRequest.
      * 
-     * @return prospectoID
+     * @return integrantes
      */
-    public java.lang.String getProspectoID() {
-        return prospectoID;
+    public safisrv.ws.schemas.Integrante[] getIntegrantes() {
+        return integrantes;
     }
 
 
     /**
-     * Sets the prospectoID value for this AltaSolicitudCreditoRequest.
+     * Sets the integrantes value for this AltaSolicitudGrupalWSRequest.
      * 
-     * @param prospectoID
+     * @param integrantes
      */
-    public void setProspectoID(java.lang.String prospectoID) {
-        this.prospectoID = prospectoID;
+    public void setIntegrantes(safisrv.ws.schemas.Integrante[] integrantes) {
+        this.integrantes = integrantes;
     }
 
 
     /**
-     * Gets the clienteID value for this AltaSolicitudCreditoRequest.
+     * Gets the grupoID value for this AltaSolicitudGrupalWSRequest.
      * 
-     * @return clienteID
+     * @return grupoID
      */
-    public java.lang.String getClienteID() {
-        return clienteID;
+    public java.lang.String getGrupoID() {
+        return grupoID;
     }
 
 
     /**
-     * Sets the clienteID value for this AltaSolicitudCreditoRequest.
+     * Sets the grupoID value for this AltaSolicitudGrupalWSRequest.
      * 
-     * @param clienteID
+     * @param grupoID
      */
-    public void setClienteID(java.lang.String clienteID) {
-        this.clienteID = clienteID;
+    public void setGrupoID(java.lang.String grupoID) {
+        this.grupoID = grupoID;
     }
 
 
     /**
-     * Gets the productoCreditoID value for this AltaSolicitudCreditoRequest.
+     * Gets the productoCreditoID value for this AltaSolicitudGrupalWSRequest.
      * 
      * @return productoCreditoID
      */
@@ -130,7 +110,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the productoCreditoID value for this AltaSolicitudCreditoRequest.
+     * Sets the productoCreditoID value for this AltaSolicitudGrupalWSRequest.
      * 
      * @param productoCreditoID
      */
@@ -140,27 +120,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the montoSolici value for this AltaSolicitudCreditoRequest.
-     * 
-     * @return montoSolici
-     */
-    public java.lang.String getMontoSolici() {
-        return montoSolici;
-    }
-
-
-    /**
-     * Sets the montoSolici value for this AltaSolicitudCreditoRequest.
-     * 
-     * @param montoSolici
-     */
-    public void setMontoSolici(java.lang.String montoSolici) {
-        this.montoSolici = montoSolici;
-    }
-
-
-    /**
-     * Gets the periodicidad value for this AltaSolicitudCreditoRequest.
+     * Gets the periodicidad value for this AltaSolicitudGrupalWSRequest.
      * 
      * @return periodicidad
      */
@@ -170,7 +130,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the periodicidad value for this AltaSolicitudCreditoRequest.
+     * Sets the periodicidad value for this AltaSolicitudGrupalWSRequest.
      * 
      * @param periodicidad
      */
@@ -180,7 +140,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the plazo value for this AltaSolicitudCreditoRequest.
+     * Gets the plazo value for this AltaSolicitudGrupalWSRequest.
      * 
      * @return plazo
      */
@@ -190,7 +150,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the plazo value for this AltaSolicitudCreditoRequest.
+     * Sets the plazo value for this AltaSolicitudGrupalWSRequest.
      * 
      * @param plazo
      */
@@ -200,47 +160,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the destinoCredito value for this AltaSolicitudCreditoRequest.
-     * 
-     * @return destinoCredito
-     */
-    public java.lang.String getDestinoCredito() {
-        return destinoCredito;
-    }
-
-
-    /**
-     * Sets the destinoCredito value for this AltaSolicitudCreditoRequest.
-     * 
-     * @param destinoCredito
-     */
-    public void setDestinoCredito(java.lang.String destinoCredito) {
-        this.destinoCredito = destinoCredito;
-    }
-
-
-    /**
-     * Gets the proyecto value for this AltaSolicitudCreditoRequest.
-     * 
-     * @return proyecto
-     */
-    public java.lang.String getProyecto() {
-        return proyecto;
-    }
-
-
-    /**
-     * Sets the proyecto value for this AltaSolicitudCreditoRequest.
-     * 
-     * @param proyecto
-     */
-    public void setProyecto(java.lang.String proyecto) {
-        this.proyecto = proyecto;
-    }
-
-
-    /**
-     * Gets the tipoDispersion value for this AltaSolicitudCreditoRequest.
+     * Gets the tipoDispersion value for this AltaSolicitudGrupalWSRequest.
      * 
      * @return tipoDispersion
      */
@@ -250,7 +170,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the tipoDispersion value for this AltaSolicitudCreditoRequest.
+     * Sets the tipoDispersion value for this AltaSolicitudGrupalWSRequest.
      * 
      * @param tipoDispersion
      */
@@ -260,7 +180,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the cuentaCLABE value for this AltaSolicitudCreditoRequest.
+     * Gets the cuentaCLABE value for this AltaSolicitudGrupalWSRequest.
      * 
      * @return cuentaCLABE
      */
@@ -270,7 +190,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the cuentaCLABE value for this AltaSolicitudCreditoRequest.
+     * Sets the cuentaCLABE value for this AltaSolicitudGrupalWSRequest.
      * 
      * @param cuentaCLABE
      */
@@ -280,7 +200,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the tipoPagoCapital value for this AltaSolicitudCreditoRequest.
+     * Gets the tipoPagoCapital value for this AltaSolicitudGrupalWSRequest.
      * 
      * @return tipoPagoCapital
      */
@@ -290,7 +210,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the tipoPagoCapital value for this AltaSolicitudCreditoRequest.
+     * Sets the tipoPagoCapital value for this AltaSolicitudGrupalWSRequest.
      * 
      * @param tipoPagoCapital
      */
@@ -300,47 +220,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the tipoCredito value for this AltaSolicitudCreditoRequest.
-     * 
-     * @return tipoCredito
-     */
-    public java.lang.String getTipoCredito() {
-        return tipoCredito;
-    }
-
-
-    /**
-     * Sets the tipoCredito value for this AltaSolicitudCreditoRequest.
-     * 
-     * @param tipoCredito
-     */
-    public void setTipoCredito(java.lang.String tipoCredito) {
-        this.tipoCredito = tipoCredito;
-    }
-
-
-    /**
-     * Gets the numeroCredito value for this AltaSolicitudCreditoRequest.
-     * 
-     * @return numeroCredito
-     */
-    public java.lang.String getNumeroCredito() {
-        return numeroCredito;
-    }
-
-
-    /**
-     * Sets the numeroCredito value for this AltaSolicitudCreditoRequest.
-     * 
-     * @param numeroCredito
-     */
-    public void setNumeroCredito(java.lang.String numeroCredito) {
-        this.numeroCredito = numeroCredito;
-    }
-
-
-    /**
-     * Gets the folio value for this AltaSolicitudCreditoRequest.
+     * Gets the folio value for this AltaSolicitudGrupalWSRequest.
      * 
      * @return folio
      */
@@ -350,7 +230,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the folio value for this AltaSolicitudCreditoRequest.
+     * Sets the folio value for this AltaSolicitudGrupalWSRequest.
      * 
      * @param folio
      */
@@ -360,7 +240,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the claveUsuario value for this AltaSolicitudCreditoRequest.
+     * Gets the claveUsuario value for this AltaSolicitudGrupalWSRequest.
      * 
      * @return claveUsuario
      */
@@ -370,7 +250,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the claveUsuario value for this AltaSolicitudCreditoRequest.
+     * Sets the claveUsuario value for this AltaSolicitudGrupalWSRequest.
      * 
      * @param claveUsuario
      */
@@ -380,7 +260,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the dispositivo value for this AltaSolicitudCreditoRequest.
+     * Gets the dispositivo value for this AltaSolicitudGrupalWSRequest.
      * 
      * @return dispositivo
      */
@@ -390,7 +270,7 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the dispositivo value for this AltaSolicitudCreditoRequest.
+     * Sets the dispositivo value for this AltaSolicitudGrupalWSRequest.
      * 
      * @param dispositivo
      */
@@ -400,8 +280,8 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof AltaSolicitudCreditoRequest)) return false;
-        AltaSolicitudCreditoRequest other = (AltaSolicitudCreditoRequest) obj;
+        if (!(obj instanceof AltaSolicitudGrupalWSRequest)) return false;
+        AltaSolicitudGrupalWSRequest other = (AltaSolicitudGrupalWSRequest) obj;
         if (obj == null) return false;
         if (this == obj) return true;
         if (__equalsCalc != null) {
@@ -410,30 +290,21 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
-            ((this.prospectoID==null && other.getProspectoID()==null) || 
-             (this.prospectoID!=null &&
-              this.prospectoID.equals(other.getProspectoID()))) &&
-            ((this.clienteID==null && other.getClienteID()==null) || 
-             (this.clienteID!=null &&
-              this.clienteID.equals(other.getClienteID()))) &&
+            ((this.integrantes==null && other.getIntegrantes()==null) || 
+             (this.integrantes!=null &&
+              java.util.Arrays.equals(this.integrantes, other.getIntegrantes()))) &&
+            ((this.grupoID==null && other.getGrupoID()==null) || 
+             (this.grupoID!=null &&
+              this.grupoID.equals(other.getGrupoID()))) &&
             ((this.productoCreditoID==null && other.getProductoCreditoID()==null) || 
              (this.productoCreditoID!=null &&
               this.productoCreditoID.equals(other.getProductoCreditoID()))) &&
-            ((this.montoSolici==null && other.getMontoSolici()==null) || 
-             (this.montoSolici!=null &&
-              this.montoSolici.equals(other.getMontoSolici()))) &&
             ((this.periodicidad==null && other.getPeriodicidad()==null) || 
              (this.periodicidad!=null &&
               this.periodicidad.equals(other.getPeriodicidad()))) &&
             ((this.plazo==null && other.getPlazo()==null) || 
              (this.plazo!=null &&
               this.plazo.equals(other.getPlazo()))) &&
-            ((this.destinoCredito==null && other.getDestinoCredito()==null) || 
-             (this.destinoCredito!=null &&
-              this.destinoCredito.equals(other.getDestinoCredito()))) &&
-            ((this.proyecto==null && other.getProyecto()==null) || 
-             (this.proyecto!=null &&
-              this.proyecto.equals(other.getProyecto()))) &&
             ((this.tipoDispersion==null && other.getTipoDispersion()==null) || 
              (this.tipoDispersion!=null &&
               this.tipoDispersion.equals(other.getTipoDispersion()))) &&
@@ -443,12 +314,6 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
             ((this.tipoPagoCapital==null && other.getTipoPagoCapital()==null) || 
              (this.tipoPagoCapital!=null &&
               this.tipoPagoCapital.equals(other.getTipoPagoCapital()))) &&
-            ((this.tipoCredito==null && other.getTipoCredito()==null) || 
-             (this.tipoCredito!=null &&
-              this.tipoCredito.equals(other.getTipoCredito()))) &&
-            ((this.numeroCredito==null && other.getNumeroCredito()==null) || 
-             (this.numeroCredito!=null &&
-              this.numeroCredito.equals(other.getNumeroCredito()))) &&
             ((this.folio==null && other.getFolio()==null) || 
              (this.folio!=null &&
               this.folio.equals(other.getFolio()))) &&
@@ -469,29 +334,28 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
-        if (getProspectoID() != null) {
-            _hashCode += getProspectoID().hashCode();
+        if (getIntegrantes() != null) {
+            for (int i=0;
+                 i<java.lang.reflect.Array.getLength(getIntegrantes());
+                 i++) {
+                java.lang.Object obj = java.lang.reflect.Array.get(getIntegrantes(), i);
+                if (obj != null &&
+                    !obj.getClass().isArray()) {
+                    _hashCode += obj.hashCode();
+                }
+            }
         }
-        if (getClienteID() != null) {
-            _hashCode += getClienteID().hashCode();
+        if (getGrupoID() != null) {
+            _hashCode += getGrupoID().hashCode();
         }
         if (getProductoCreditoID() != null) {
             _hashCode += getProductoCreditoID().hashCode();
-        }
-        if (getMontoSolici() != null) {
-            _hashCode += getMontoSolici().hashCode();
         }
         if (getPeriodicidad() != null) {
             _hashCode += getPeriodicidad().hashCode();
         }
         if (getPlazo() != null) {
             _hashCode += getPlazo().hashCode();
-        }
-        if (getDestinoCredito() != null) {
-            _hashCode += getDestinoCredito().hashCode();
-        }
-        if (getProyecto() != null) {
-            _hashCode += getProyecto().hashCode();
         }
         if (getTipoDispersion() != null) {
             _hashCode += getTipoDispersion().hashCode();
@@ -501,12 +365,6 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
         }
         if (getTipoPagoCapital() != null) {
             _hashCode += getTipoPagoCapital().hashCode();
-        }
-        if (getTipoCredito() != null) {
-            _hashCode += getTipoCredito().hashCode();
-        }
-        if (getNumeroCredito() != null) {
-            _hashCode += getNumeroCredito().hashCode();
         }
         if (getFolio() != null) {
             _hashCode += getFolio().hashCode();
@@ -523,31 +381,25 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(AltaSolicitudCreditoRequest.class, true);
+        new org.apache.axis.description.TypeDesc(AltaSolicitudGrupalWSRequest.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://safisrv/ws/schemas", ">altaSolicitudCreditoRequest"));
+        typeDesc.setXmlType(new javax.xml.namespace.QName("http://safisrv/ws/schemas", ">AltaSolicitudGrupalWSRequest"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("prospectoID");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "prospectoID"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setFieldName("integrantes");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "integrantes"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "integrante"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("clienteID");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "clienteID"));
+        elemField.setFieldName("grupoID");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "grupoID"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("productoCreditoID");
         elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "productoCreditoID"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("montoSolici");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "montoSolici"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
@@ -560,18 +412,6 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("plazo");
         elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "plazo"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("destinoCredito");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "destinoCredito"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("proyecto");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "proyecto"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
@@ -590,18 +430,6 @@ public class AltaSolicitudCreditoRequest  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("tipoPagoCapital");
         elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "tipoPagoCapital"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("tipoCredito");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "tipoCredito"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("numeroCredito");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "numeroCredito"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

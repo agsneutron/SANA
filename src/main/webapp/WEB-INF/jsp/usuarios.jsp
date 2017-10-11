@@ -129,6 +129,12 @@ function envia(page) {
                         Cobrador
                     </label>
                 </div>
+                <div class="radio radio-primary">
+                    <label>
+                        <form:radiobutton path="rol.id_rol" value="4"/>
+                        Inspector
+                    </label>
+                </div>
             </div>
         </div>
         

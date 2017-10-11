@@ -5,9 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,15 +21,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Random;
 import com.sanaTF.model.DistanceMatrixAplicacion;
+import com.sanaTF.model.Grupos;
 import com.sanaTF.model.PromotoresRuta;
 import com.sanaTF.model.ListaCobradores;
 import com.sanaTF.model.PromotoresLL;
 import com.sanaTF.model.Lugares;
-import com.sanaTF.model.Mensajes;
 import com.sanaTF.model.Pagos;
 
 import com.sanaTF.model.RutaOptima;
-import com.sanaTF.service.ClientesService;
 import com.sanaTF.model.CobroRealiza;
 import com.sanaTF.controller.CobradoresConsolaController;
 
@@ -42,6 +39,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 import javax.sql.DataSource;
 import javax.xml.rpc.ServiceException;
 
@@ -50,12 +52,9 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
 import com.sanaTF.model.ApplicationContextProvider;
-import com.sanaTF.model.Clientes;
 import com.google.maps.GeoApiContext;
 import com.google.maps.model.DistanceMatrix;
 
-import safisrv.ws.schemas.ConsultaSaldoCreditoRequest;
-import safisrv.ws.schemas.ConsultaSaldoCreditoResponse;
 import safisrv.ws.schemas.PagoCreditoRequest;
 import safisrv.ws.schemas.PagoCreditoResponse;
 import safisrv.ws.schemas.SAFIServicios;
@@ -79,8 +78,7 @@ public class AjaxController {
 		String fechaFinal = request.getParameter("fechaFinal");
         Random rand = new Random();
         float r = rand.nextFloat() * 100;
-        String result = "<br>Next Random # is <b>" + r + "</b>. Generated on <b>" + new Date().toString() + "</b>";
-        System.out.println("Debug Message from CrunchifySpringAjaxJQuery Controller.." + new Date().toString());
+      
         //response.setContentType("application/json");
         map.put("fechas", "fechas");
 		return reporte(fechaInicio,fechaFinal);
@@ -265,15 +263,19 @@ public class AjaxController {
 		Iterator<Pagos> it = listPagos.iterator();
 		Pagos pago=null;
 		CobroRealiza cobro =null;
+		int pagoEnviado=0;
 		while(it.hasNext()){
 			  pago = it.next();			  
 			  cobro = enviaPagos(pago.getUsuario(),String.valueOf(pago.getCreditoId()),pago.getDispositivo(),pago.getFolio(),String.valueOf(pago.getPagoMontoCobrado()),String.valueOf(pago.getMontoGL()));
 			  if (cobro!=null){
 				  System.out.println(cobro.getMensajeRespuesta());
 			  }
+			  pagoEnviado=1;
 			//meter el guardado del pago en safi
 		}
-		
+		if (pagoEnviado ==1){
+			registraPagoSANA(sClientes);
+		}
 		hmap.put("lista", listPagos);	
 		ObjectMapper mapper = new ObjectMapper();
 		response.setContentType("application/json");
@@ -295,7 +297,32 @@ public class AjaxController {
     }
 	
 	
-	
+	@RequestMapping(value = "/actualizaBatch", method = RequestMethod.GET)
+    public @ResponseBody
+    void generaBatch(HttpServletRequest request,HttpServletResponse response,Map<String, Object> map) {
+		
+		Map<String, Object> hmap = new HashMap<String, Object>();
+		hmap.put("respuesta", restoreBatch());	
+		
+		ObjectMapper mapper = new ObjectMapper();
+		response.setContentType("application/json");
+		
+		try {
+			mapper.writeValue(response.getOutputStream(), hmap);
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+        
+    }
 	
 	
 	
@@ -338,7 +365,28 @@ public class AjaxController {
 	}
 	
 	
-	
+	public String registraPagoSANA(String pagos){		
+		
+		String querySolicitud="update lugares_cobro set pagoEnviado = 1"
+				+ " where id in (" + pagos + ")";
+		String respuesta="";
+		
+		DataSource ds = (DataSource)ApplicationContextProvider.getApplicationContext().getBean("dataSource");
+		Connection c;	    	
+		try {
+			c = ds.getConnection();
+			Statement stmt = c.createStatement();			
+			stmt.execute(querySolicitud);
+			c.close();
+			respuesta="exito";
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			respuesta="noexito";
+		} 		
+		return respuesta;		
+	}
 	
 	
 	public String reporte(String fechaInicio, String fechaFinal){			
@@ -618,10 +666,10 @@ public class AjaxController {
 				+ " B.negocioNombre, A.lugarVisitado"
 				+ " FROM dbsanatf.lugares_cobro A, dbsanatf.solicitudes B, dbsanatf.User C,dbsanatf.clientes D,dbsanatf.bachtable E"
 				+ " where A.idCliente = B.idCliente and B.user_id = " + userId
-				+ " and fechaVisita between '" + fechaInicio + "' and '" + fechaFinal + "'"
+				+ " and fechaVencimiento between '" + fechaInicio + "' and '" + fechaFinal + "'"
 				+ " and B.User_id=C.User_id"
 				+ " and A.idCliente = D.idCliente"
-				+ " and A.idCliente = E.ClienteId";
+				+ " and D.idClienteSANA = E.ClienteId";
 
 				
 		
@@ -689,7 +737,7 @@ public class AjaxController {
 		
 		String query= "SELECT C.Usuario as usuario,E.CreditoId,A.dispositivo,A.folio, A.pagoMontoCobrado,0 montoGL"
 				+ " FROM dbsanatf.lugares_cobro A, dbsanatf.solicitudes B, dbsanatf.User C,dbsanatf.clientes D,dbsanatf.bachtable E"
-				+ " where A.idCliente = B.idCliente and B.idCliente in (" + clientes + ")"
+				+ " where A.idCliente = B.idCliente and A.id in (" + clientes + ")"
 				+ " and B.User_id=C.User_id"
 				+ " and A.idCliente = D.idCliente"
 				+ " and D.idClienteSANA = E.ClienteId";
@@ -828,6 +876,62 @@ public class AjaxController {
 		
 	}
 	
+	private static String restoreBatch() {
+		String Respuesta="";
+	      try {
+	         Process p = Runtime
+	               .getRuntime()
+	               .exec("/usr/local/mysql/bin/mysql -u root -p password database");
+
+	         new HiloLector(p.getErrorStream()).start();
+	         
+	         OutputStream os = p.getOutputStream();
+	         FileInputStream fis = new FileInputStream("/Users/bamaa/dumps/batch_20171009.sql");
+	         byte[] buffer = new byte[1000];
+
+	         int leido = fis.read(buffer);
+	         while (leido > 0) {
+	            os.write(buffer, 0, leido);
+	            leido = fis.read(buffer);
+	         }
+
+	         os.flush();
+	         os.close();
+	         fis.close();
+	         
+	         Respuesta="El proceso bacth se generó correctamente";
+
+	      } catch (Exception e) {
+	    	  Respuesta="El proceso bacth generó errores: " + e.getMessage();
+	         e.printStackTrace();
+	         
+	      }
+	      return Respuesta;
+	   }
+	
+	static class HiloLector extends Thread {
+	      private InputStream is;
+
+	      public HiloLector(InputStream is) {
+	         this.is = is;
+	      }
+
+	      @Override
+	      public void run() {
+	         try {
+	            byte[] buffer = new byte[1000];
+	            int leido = is.read(buffer);
+	            while (leido > 0) {
+	               String texto = new String(buffer, 0, leido);
+	               System.out.print(texto);
+	               leido = is.read(buffer);
+	            }
+	         } catch (Exception e) {
+	            e.printStackTrace();
+	         }
+	      }
+	   }
+
 	
 }
 

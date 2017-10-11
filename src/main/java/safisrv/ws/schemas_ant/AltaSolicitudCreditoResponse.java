@@ -1,30 +1,54 @@
 /**
- * AltaSolicitudGrupalWSResponse.java
+ * AltaSolicitudCreditoResponse.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package safisrv.ws.schemas;
+package safisrv.ws.schemas_ant;
 
-public class AltaSolicitudGrupalWSResponse  implements java.io.Serializable {
+public class AltaSolicitudCreditoResponse  implements java.io.Serializable {
+    private java.lang.String solicitudCreditoID;
+
     private java.lang.String codigoRespuesta;
 
     private java.lang.String mensajeRespuesta;
 
-    public AltaSolicitudGrupalWSResponse() {
+    public AltaSolicitudCreditoResponse() {
     }
 
-    public AltaSolicitudGrupalWSResponse(
+    public AltaSolicitudCreditoResponse(
+           java.lang.String solicitudCreditoID,
            java.lang.String codigoRespuesta,
            java.lang.String mensajeRespuesta) {
+           this.solicitudCreditoID = solicitudCreditoID;
            this.codigoRespuesta = codigoRespuesta;
            this.mensajeRespuesta = mensajeRespuesta;
     }
 
 
     /**
-     * Gets the codigoRespuesta value for this AltaSolicitudGrupalWSResponse.
+     * Gets the solicitudCreditoID value for this AltaSolicitudCreditoResponse.
+     * 
+     * @return solicitudCreditoID
+     */
+    public java.lang.String getSolicitudCreditoID() {
+        return solicitudCreditoID;
+    }
+
+
+    /**
+     * Sets the solicitudCreditoID value for this AltaSolicitudCreditoResponse.
+     * 
+     * @param solicitudCreditoID
+     */
+    public void setSolicitudCreditoID(java.lang.String solicitudCreditoID) {
+        this.solicitudCreditoID = solicitudCreditoID;
+    }
+
+
+    /**
+     * Gets the codigoRespuesta value for this AltaSolicitudCreditoResponse.
      * 
      * @return codigoRespuesta
      */
@@ -34,7 +58,7 @@ public class AltaSolicitudGrupalWSResponse  implements java.io.Serializable {
 
 
     /**
-     * Sets the codigoRespuesta value for this AltaSolicitudGrupalWSResponse.
+     * Sets the codigoRespuesta value for this AltaSolicitudCreditoResponse.
      * 
      * @param codigoRespuesta
      */
@@ -44,7 +68,7 @@ public class AltaSolicitudGrupalWSResponse  implements java.io.Serializable {
 
 
     /**
-     * Gets the mensajeRespuesta value for this AltaSolicitudGrupalWSResponse.
+     * Gets the mensajeRespuesta value for this AltaSolicitudCreditoResponse.
      * 
      * @return mensajeRespuesta
      */
@@ -54,7 +78,7 @@ public class AltaSolicitudGrupalWSResponse  implements java.io.Serializable {
 
 
     /**
-     * Sets the mensajeRespuesta value for this AltaSolicitudGrupalWSResponse.
+     * Sets the mensajeRespuesta value for this AltaSolicitudCreditoResponse.
      * 
      * @param mensajeRespuesta
      */
@@ -64,8 +88,8 @@ public class AltaSolicitudGrupalWSResponse  implements java.io.Serializable {
 
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof AltaSolicitudGrupalWSResponse)) return false;
-        AltaSolicitudGrupalWSResponse other = (AltaSolicitudGrupalWSResponse) obj;
+        if (!(obj instanceof AltaSolicitudCreditoResponse)) return false;
+        AltaSolicitudCreditoResponse other = (AltaSolicitudCreditoResponse) obj;
         if (obj == null) return false;
         if (this == obj) return true;
         if (__equalsCalc != null) {
@@ -74,6 +98,9 @@ public class AltaSolicitudGrupalWSResponse  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
+            ((this.solicitudCreditoID==null && other.getSolicitudCreditoID()==null) || 
+             (this.solicitudCreditoID!=null &&
+              this.solicitudCreditoID.equals(other.getSolicitudCreditoID()))) &&
             ((this.codigoRespuesta==null && other.getCodigoRespuesta()==null) || 
              (this.codigoRespuesta!=null &&
               this.codigoRespuesta.equals(other.getCodigoRespuesta()))) &&
@@ -91,6 +118,9 @@ public class AltaSolicitudGrupalWSResponse  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
+        if (getSolicitudCreditoID() != null) {
+            _hashCode += getSolicitudCreditoID().hashCode();
+        }
         if (getCodigoRespuesta() != null) {
             _hashCode += getCodigoRespuesta().hashCode();
         }
@@ -103,11 +133,17 @@ public class AltaSolicitudGrupalWSResponse  implements java.io.Serializable {
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(AltaSolicitudGrupalWSResponse.class, true);
+        new org.apache.axis.description.TypeDesc(AltaSolicitudCreditoResponse.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://safisrv/ws/schemas", ">AltaSolicitudGrupalWSResponse"));
+        typeDesc.setXmlType(new javax.xml.namespace.QName("http://safisrv/ws/schemas", ">altaSolicitudCreditoResponse"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("solicitudCreditoID");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "solicitudCreditoID"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("codigoRespuesta");
         elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "codigoRespuesta"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));

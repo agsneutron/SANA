@@ -5,7 +5,7 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package safisrv.ws.schemas;
+package safisrv.ws.schemas_ant;
 
 public interface SAFIServiciosService extends javax.xml.rpc.Service {
     public java.lang.String getSAFIServiciosSoap11Address();

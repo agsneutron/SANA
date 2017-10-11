@@ -43,15 +43,15 @@ public class SolicitudGrupalListadoController {
 		+ " fechaRegistro,if (estatus=1,'Aprobada','No Aprobada') estatus ,if (creditoMonto is null,0"
 		+ " ,creditoMonto) MontoCredito, 0 adeudo"
 		+ " FROM dbsanatf.solicitudes B"
-		+ " left join dbsanatf.lugares_cobro A on  B.idCliente = A.idCliente"
+		//+ " left join dbsanatf.lugares_cobro A on  B.idCliente = A.idCliente"
 		+ " left join dbsanatf.User C on B.User_id=C.User_id"
 		+ " left join dbsanatf.clientes D on B.idCliente = D.idCliente"
-		+ " left join dbsanatf.bachtable E on B.idCliente = E.ClienteId"
+		+ " left join dbsanatf.bachtable E on D.idClienteSANA = E.ClienteId"
 		+ " left join dbsanatf.grupos F on B.idgrupo=F.idgrupo"
 		+ " left join dbsanatf.User G on G.User_id=B.idinspector"
 		+ " where C.nombre is not null and B.idgrupo > 0"
 		+ " and creditoIdRenovacionAumento not in (1,2)"
-		+ " and B.idgrupo is not null";
+		+ " and B.idgrupo is not null order by B.idgrupo";
 		
 		
 		DataSource ds = (DataSource)ApplicationContextProvider.getApplicationContext().getBean("dataSource");

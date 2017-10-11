@@ -17,10 +17,11 @@ public class TablaRuta {
     private String idCredito;
     private String folioSolicitud;
     private String claveUsuario;
+    private int idPago;
     
 	public TablaRuta(int idCliente, String cliente, String horaDesde, String horaHasta, double cuota, String cobro,
 			double cobrado, String razon, String circulo, double latitud, double longitud, String direccion,
-			String nombreNegocio, String idCredito, String folioSolicitud, String claveUsuario) {
+			String nombreNegocio, String idCredito, String folioSolicitud, String claveUsuario, int idPago) {
 		super();
 		this.idCliente = idCliente;
 		this.cliente = cliente;
@@ -38,6 +39,7 @@ public class TablaRuta {
 		this.idCredito = idCredito;
 		this.folioSolicitud = folioSolicitud;
 		this.claveUsuario = claveUsuario;
+		this.idPago = idPago;
 	}
 
 	public int getIdCliente() {
@@ -46,6 +48,16 @@ public class TablaRuta {
 
 	public void setIdCliente(int idCliente) {
 		this.idCliente = idCliente;
+	}
+	
+	
+
+	public int getIdPago() {
+		return idPago;
+	}
+
+	public void setIdPago(int idPago) {
+		this.idPago = idPago;
 	}
 
 	public String getCliente() {

@@ -157,7 +157,9 @@ function metavscobrado(){
 	var cobrado=0;
 	for(var i = 0, l = datosJson.montos.length; i < l; i++){		
 		meta +=datosJson.montos[i].cuota;
-		cobrado +=datosJson.montos[i].cobrado;
+		if (datosJson.montos[i].cobro==1){
+			cobrado +=datosJson.montos[i].cobrado;
+		}	
     }
 	$j('#meta').html('Meta del d&iacute;a <br> <strong>$'+ formato_numero(meta,2,'.',',') + '</strong>');
 	$j('#cobrado').html('Cobrado <br> <strong>$'+ formato_numero(cobrado,2,'.',',') + '</strong>');

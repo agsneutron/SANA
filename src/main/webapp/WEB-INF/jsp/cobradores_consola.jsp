@@ -123,7 +123,7 @@ function envia(page) {
                                         </td>
                                         <td>${cliente.cobrado}</td>
                                         <td>${cliente.razon}</td>
-                                        <td><input <c:if test="${cliente.cobro == '0'}">  disabled </c:if> type="checkbox" name="pagar[]" value="${cliente.idCliente}"/></td>
+                                        <td><input <c:if test="${cliente.cobro == '0'}">  disabled </c:if> type="checkbox" name="pagar[]" value="${cliente.idPago}"/></td>
                                       </tr>
                                      </c:forEach>
                                       

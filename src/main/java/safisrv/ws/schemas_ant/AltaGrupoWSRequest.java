@@ -1,14 +1,14 @@
 /**
- * ConsultaSaldoCreditoRequest.java
+ * AltaGrupoWSRequest.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package safisrv.ws.schemas;
+package safisrv.ws.schemas_ant;
 
-public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
-    private java.lang.String creditoID;
+public class AltaGrupoWSRequest  implements java.io.Serializable {
+    private java.lang.String nombreGrupo;
 
     private java.lang.String folio;
 
@@ -16,15 +16,15 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
     private java.lang.String dispositivo;
 
-    public ConsultaSaldoCreditoRequest() {
+    public AltaGrupoWSRequest() {
     }
 
-    public ConsultaSaldoCreditoRequest(
-           java.lang.String creditoID,
+    public AltaGrupoWSRequest(
+           java.lang.String nombreGrupo,
            java.lang.String folio,
            java.lang.String claveUsuario,
            java.lang.String dispositivo) {
-           this.creditoID = creditoID;
+           this.nombreGrupo = nombreGrupo;
            this.folio = folio;
            this.claveUsuario = claveUsuario;
            this.dispositivo = dispositivo;
@@ -32,27 +32,27 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the creditoID value for this ConsultaSaldoCreditoRequest.
+     * Gets the nombreGrupo value for this AltaGrupoWSRequest.
      * 
-     * @return creditoID
+     * @return nombreGrupo
      */
-    public java.lang.String getCreditoID() {
-        return creditoID;
+    public java.lang.String getNombreGrupo() {
+        return nombreGrupo;
     }
 
 
     /**
-     * Sets the creditoID value for this ConsultaSaldoCreditoRequest.
+     * Sets the nombreGrupo value for this AltaGrupoWSRequest.
      * 
-     * @param creditoID
+     * @param nombreGrupo
      */
-    public void setCreditoID(java.lang.String creditoID) {
-        this.creditoID = creditoID;
+    public void setNombreGrupo(java.lang.String nombreGrupo) {
+        this.nombreGrupo = nombreGrupo;
     }
 
 
     /**
-     * Gets the folio value for this ConsultaSaldoCreditoRequest.
+     * Gets the folio value for this AltaGrupoWSRequest.
      * 
      * @return folio
      */
@@ -62,7 +62,7 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the folio value for this ConsultaSaldoCreditoRequest.
+     * Sets the folio value for this AltaGrupoWSRequest.
      * 
      * @param folio
      */
@@ -72,7 +72,7 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the claveUsuario value for this ConsultaSaldoCreditoRequest.
+     * Gets the claveUsuario value for this AltaGrupoWSRequest.
      * 
      * @return claveUsuario
      */
@@ -82,7 +82,7 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the claveUsuario value for this ConsultaSaldoCreditoRequest.
+     * Sets the claveUsuario value for this AltaGrupoWSRequest.
      * 
      * @param claveUsuario
      */
@@ -92,7 +92,7 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Gets the dispositivo value for this ConsultaSaldoCreditoRequest.
+     * Gets the dispositivo value for this AltaGrupoWSRequest.
      * 
      * @return dispositivo
      */
@@ -102,7 +102,7 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
 
     /**
-     * Sets the dispositivo value for this ConsultaSaldoCreditoRequest.
+     * Sets the dispositivo value for this AltaGrupoWSRequest.
      * 
      * @param dispositivo
      */
@@ -112,8 +112,8 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof ConsultaSaldoCreditoRequest)) return false;
-        ConsultaSaldoCreditoRequest other = (ConsultaSaldoCreditoRequest) obj;
+        if (!(obj instanceof AltaGrupoWSRequest)) return false;
+        AltaGrupoWSRequest other = (AltaGrupoWSRequest) obj;
         if (obj == null) return false;
         if (this == obj) return true;
         if (__equalsCalc != null) {
@@ -122,9 +122,9 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
-            ((this.creditoID==null && other.getCreditoID()==null) || 
-             (this.creditoID!=null &&
-              this.creditoID.equals(other.getCreditoID()))) &&
+            ((this.nombreGrupo==null && other.getNombreGrupo()==null) || 
+             (this.nombreGrupo!=null &&
+              this.nombreGrupo.equals(other.getNombreGrupo()))) &&
             ((this.folio==null && other.getFolio()==null) || 
              (this.folio!=null &&
               this.folio.equals(other.getFolio()))) &&
@@ -145,8 +145,8 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
-        if (getCreditoID() != null) {
-            _hashCode += getCreditoID().hashCode();
+        if (getNombreGrupo() != null) {
+            _hashCode += getNombreGrupo().hashCode();
         }
         if (getFolio() != null) {
             _hashCode += getFolio().hashCode();
@@ -163,13 +163,13 @@ public class ConsultaSaldoCreditoRequest  implements java.io.Serializable {
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(ConsultaSaldoCreditoRequest.class, true);
+        new org.apache.axis.description.TypeDesc(AltaGrupoWSRequest.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://safisrv/ws/schemas", ">ConsultaSaldoCreditoRequest"));
+        typeDesc.setXmlType(new javax.xml.namespace.QName("http://safisrv/ws/schemas", ">AltaGrupoWSRequest"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("creditoID");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "creditoID"));
+        elemField.setFieldName("nombreGrupo");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "nombreGrupo"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

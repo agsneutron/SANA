@@ -10,12 +10,51 @@
 	<jersey.version>1.18.3</jersey.version>		
   </properties>
   
+  
    
   <dependencies>
   	<dependency>
 		<groupId>com.google.code.gson</groupId>
 		<artifactId>gson</artifactId>
 		<version>2.5</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/commons-discovery/commons-discovery -->
+	<dependency>
+	    <groupId>commons-discovery</groupId>
+	    <artifactId>commons-discovery</artifactId>
+	    <version>0.4</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/javax.jms/jms -->
+	<dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <version>6.0</version>
+      <scope>provided</scope>
+    </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/xmlbeans/xmlbeans -->
+	<dependency>
+	    <groupId>xmlbeans</groupId>
+	    <artifactId>xmlbeans</artifactId>
+	    <version>1.0</version>
+	</dependency>
+    
+	
+	<!-- https://mvnrepository.com/artifact/org.apache.xmlbeans/xmlbeans -->
+	<!-- https://mvnrepository.com/artifact/org.apache.xmlbeans/xmlbeans -->
+<dependency>
+    <groupId>org.apache.xmlbeans</groupId>
+    <artifactId>xmlbeans</artifactId>
+    <version>2.2.0</version>
+</dependency>
+
+	
+	
+		<!-- https://mvnrepository.com/artifact/wsdl4j/wsdl4j -->
+	<dependency>
+	    <groupId>wsdl4j</groupId>
+	    <artifactId>wsdl4j</artifactId>
+	    <version>1.6.2</version>
 	</dependency>
 	
 	<dependency>
@@ -80,8 +119,27 @@
 		<artifactId>javax.xml.rpc-api</artifactId>
 		<version>1.1.1</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.apache.axis/axis-jaxrpc -->
+<dependency>
+    <groupId>org.apache.axis</groupId>
+    <artifactId>axis-jaxrpc</artifactId>
+    <version>1.4</version>
+</dependency>
+	<dependency>
+	    <groupId>org.apache.axis2</groupId>
+	    <artifactId>axis2</artifactId>
+	    <version>1.6.2</version>
 
-  	
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.springframework.ws/spring-ws -->
+	<dependency>
+	    <groupId>org.springframework.ws</groupId>
+	    <artifactId>spring-ws</artifactId>
+	    <version>2.1.0.RELEASE</version>
+	    <type>pom</type>
+	</dependency>
+
   
  	<dependency>
 		<groupId>org.springframework</groupId>
@@ -93,6 +151,9 @@
 		<artifactId>spring-beans</artifactId>
 		<version>${org.springframework.version}</version>
 	</dependency>
+	
+	
+	
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context</artifactId>

@@ -26,7 +26,14 @@ function main_consulta() {
 
 }
 
-
+function fechaActual() {
+	var d = new Date();
+    var mes = d.getMonth()+1;
+    var dia = d.getDate();
+    var anio = d.getFullYear();
+    var fecha = anio+"-"+mes+"-"+dia;
+    return fecha;
+}
 
 
 function verDatos() {
@@ -37,9 +44,17 @@ function verDatos() {
 
     
     if (fechaInicio!=""){fechaInicio = myDateFormatter($('#fechaInicio').datepicker("getDate"));}
+    else{
+    	fechaInicio=fechaActual();
+    }
     if (fechaFin!=""){fechaFin = myDateFormatter($('#fechaFinal').datepicker("getDate"));}
-    
-    if(fechaInicio!=""){ajax_data.fechaInicio=fechaInicio;}
+    else{
+    	fechaFin=fechaActual();
+    }
+
+    if(fechaInicio!=""){
+    	ajax_data.fechaInicio=fechaInicio;
+    }
     if(fechaFin!=""){ajax_data.fechaFinal=fechaFin;}
     
 	$j.ajax({

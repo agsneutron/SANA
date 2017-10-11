@@ -1,74 +1,54 @@
 /**
- * SolAltaClienteResponse.java
+ * AltaGrupoWSResponse.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package safisrv.ws.schemas;
+package safisrv.ws.schemas_ant;
 
-public class SolAltaClienteResponse  implements java.io.Serializable {
-    private java.lang.String clienteID;
-
-    private java.lang.String mensajeRespuesta;
+public class AltaGrupoWSResponse  implements java.io.Serializable {
+    private java.lang.String grupoID;
 
     private java.lang.String codigoRespuesta;
 
-    public SolAltaClienteResponse() {
+    private java.lang.String mensajeRespuesta;
+
+    public AltaGrupoWSResponse() {
     }
 
-    public SolAltaClienteResponse(
-           java.lang.String clienteID,
-           java.lang.String mensajeRespuesta,
-           java.lang.String codigoRespuesta) {
-           this.clienteID = clienteID;
-           this.mensajeRespuesta = mensajeRespuesta;
+    public AltaGrupoWSResponse(
+           java.lang.String grupoID,
+           java.lang.String codigoRespuesta,
+           java.lang.String mensajeRespuesta) {
+           this.grupoID = grupoID;
            this.codigoRespuesta = codigoRespuesta;
+           this.mensajeRespuesta = mensajeRespuesta;
     }
 
 
     /**
-     * Gets the clienteID value for this SolAltaClienteResponse.
+     * Gets the grupoID value for this AltaGrupoWSResponse.
      * 
-     * @return clienteID
+     * @return grupoID
      */
-    public java.lang.String getClienteID() {
-        return clienteID;
+    public java.lang.String getGrupoID() {
+        return grupoID;
     }
 
 
     /**
-     * Sets the clienteID value for this SolAltaClienteResponse.
+     * Sets the grupoID value for this AltaGrupoWSResponse.
      * 
-     * @param clienteID
+     * @param grupoID
      */
-    public void setClienteID(java.lang.String clienteID) {
-        this.clienteID = clienteID;
+    public void setGrupoID(java.lang.String grupoID) {
+        this.grupoID = grupoID;
     }
 
 
     /**
-     * Gets the mensajeRespuesta value for this SolAltaClienteResponse.
-     * 
-     * @return mensajeRespuesta
-     */
-    public java.lang.String getMensajeRespuesta() {
-        return mensajeRespuesta;
-    }
-
-
-    /**
-     * Sets the mensajeRespuesta value for this SolAltaClienteResponse.
-     * 
-     * @param mensajeRespuesta
-     */
-    public void setMensajeRespuesta(java.lang.String mensajeRespuesta) {
-        this.mensajeRespuesta = mensajeRespuesta;
-    }
-
-
-    /**
-     * Gets the codigoRespuesta value for this SolAltaClienteResponse.
+     * Gets the codigoRespuesta value for this AltaGrupoWSResponse.
      * 
      * @return codigoRespuesta
      */
@@ -78,7 +58,7 @@ public class SolAltaClienteResponse  implements java.io.Serializable {
 
 
     /**
-     * Sets the codigoRespuesta value for this SolAltaClienteResponse.
+     * Sets the codigoRespuesta value for this AltaGrupoWSResponse.
      * 
      * @param codigoRespuesta
      */
@@ -86,10 +66,30 @@ public class SolAltaClienteResponse  implements java.io.Serializable {
         this.codigoRespuesta = codigoRespuesta;
     }
 
+
+    /**
+     * Gets the mensajeRespuesta value for this AltaGrupoWSResponse.
+     * 
+     * @return mensajeRespuesta
+     */
+    public java.lang.String getMensajeRespuesta() {
+        return mensajeRespuesta;
+    }
+
+
+    /**
+     * Sets the mensajeRespuesta value for this AltaGrupoWSResponse.
+     * 
+     * @param mensajeRespuesta
+     */
+    public void setMensajeRespuesta(java.lang.String mensajeRespuesta) {
+        this.mensajeRespuesta = mensajeRespuesta;
+    }
+
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof SolAltaClienteResponse)) return false;
-        SolAltaClienteResponse other = (SolAltaClienteResponse) obj;
+        if (!(obj instanceof AltaGrupoWSResponse)) return false;
+        AltaGrupoWSResponse other = (AltaGrupoWSResponse) obj;
         if (obj == null) return false;
         if (this == obj) return true;
         if (__equalsCalc != null) {
@@ -98,15 +98,15 @@ public class SolAltaClienteResponse  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
-            ((this.clienteID==null && other.getClienteID()==null) || 
-             (this.clienteID!=null &&
-              this.clienteID.equals(other.getClienteID()))) &&
-            ((this.mensajeRespuesta==null && other.getMensajeRespuesta()==null) || 
-             (this.mensajeRespuesta!=null &&
-              this.mensajeRespuesta.equals(other.getMensajeRespuesta()))) &&
+            ((this.grupoID==null && other.getGrupoID()==null) || 
+             (this.grupoID!=null &&
+              this.grupoID.equals(other.getGrupoID()))) &&
             ((this.codigoRespuesta==null && other.getCodigoRespuesta()==null) || 
              (this.codigoRespuesta!=null &&
-              this.codigoRespuesta.equals(other.getCodigoRespuesta())));
+              this.codigoRespuesta.equals(other.getCodigoRespuesta()))) &&
+            ((this.mensajeRespuesta==null && other.getMensajeRespuesta()==null) || 
+             (this.mensajeRespuesta!=null &&
+              this.mensajeRespuesta.equals(other.getMensajeRespuesta())));
         __equalsCalc = null;
         return _equals;
     }
@@ -118,14 +118,14 @@ public class SolAltaClienteResponse  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
-        if (getClienteID() != null) {
-            _hashCode += getClienteID().hashCode();
-        }
-        if (getMensajeRespuesta() != null) {
-            _hashCode += getMensajeRespuesta().hashCode();
+        if (getGrupoID() != null) {
+            _hashCode += getGrupoID().hashCode();
         }
         if (getCodigoRespuesta() != null) {
             _hashCode += getCodigoRespuesta().hashCode();
+        }
+        if (getMensajeRespuesta() != null) {
+            _hashCode += getMensajeRespuesta().hashCode();
         }
         __hashCodeCalc = false;
         return _hashCode;
@@ -133,25 +133,25 @@ public class SolAltaClienteResponse  implements java.io.Serializable {
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(SolAltaClienteResponse.class, true);
+        new org.apache.axis.description.TypeDesc(AltaGrupoWSResponse.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://safisrv/ws/schemas", ">SolAltaClienteResponse"));
+        typeDesc.setXmlType(new javax.xml.namespace.QName("http://safisrv/ws/schemas", ">AltaGrupoWSResponse"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("clienteID");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "clienteID"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("mensajeRespuesta");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "mensajeRespuesta"));
+        elemField.setFieldName("grupoID");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "grupoID"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("codigoRespuesta");
         elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "codigoRespuesta"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("mensajeRespuesta");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://safisrv/ws/schemas", "mensajeRespuesta"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

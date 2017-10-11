@@ -48,7 +48,7 @@ public class SolicitudesListadoController {
 					+ " left join dbsanatf.User C on B.User_id=C.User_id"
 					+ " left join dbsanatf.clientes D on B.idCliente = D.idCliente"
 					+ " left join dbsanatf.bachtable E on B.idCliente = E.ClienteId"
-					+ " where C.nombre is not null and B.idgrupo = 0"
+					+ " where C.nombre is not null and (B.idgrupo = 0 or B.idgrupo is null)"
 					+ " and creditoIdRenovacionAumento not in (1,2)";
 
 				
@@ -93,7 +93,7 @@ public class SolicitudesListadoController {
 					+ " left join dbsanatf.User C on B.User_id=C.User_id"
 					+ " left join dbsanatf.clientes D on B.idCliente = D.idCliente"
 					+ " left join dbsanatf.bachtable E on B.idCliente = E.ClienteId"
-					+ " where C.User_id = 0 and B.idgrupo = 0"
+					+ " where C.User_id = 0 and (B.idgrupo = 0 or B.idgrupo is null)"
 					+ " and creditoIdRenovacionAumento not in (1,2)";
 
 				
@@ -137,7 +137,7 @@ public class SolicitudesListadoController {
 					+ " left join dbsanatf.User C on B.User_id=C.User_id"
 					+ " left join dbsanatf.clientes D on B.idCliente = D.idCliente"
 					+ " left join dbsanatf.bachtable E on B.idCliente = E.ClienteId"
-					+ " where creditoIdRenovacionAumento in (1,2) and B.idgrupo = 0";
+					+ " where creditoIdRenovacionAumento in (1,2) and (B.idgrupo = 0 or B.idgrupo is null)";
 
 				
 		
