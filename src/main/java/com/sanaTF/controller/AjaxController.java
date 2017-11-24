@@ -666,7 +666,7 @@ public class AjaxController {
 				+ " B.negocioNombre, A.lugarVisitado"
 				+ " FROM dbsanatf.lugares_cobro A, dbsanatf.solicitudes B, dbsanatf.User C,dbsanatf.clientes D,dbsanatf.bachtable E"
 				+ " where A.idCliente = B.idCliente and B.user_id = " + userId
-				+ " and fechaVencimiento between '" + fechaInicio + "' and '" + fechaFinal + "'"
+				+ " and fechaExigible between '" + fechaInicio + "' and '" + fechaFinal + "'"
 				+ " and B.User_id=C.User_id"
 				+ " and A.idCliente = D.idCliente"
 				+ " and D.idClienteSANA = E.ClienteId";
@@ -735,12 +735,27 @@ public class AjaxController {
 	public ArrayList pagos(String clientes){	
 		ArrayList lista=new ArrayList();
 		
-		String query= "SELECT C.Usuario as usuario,E.CreditoId,A.dispositivo,A.folio, A.pagoMontoCobrado,0 montoGL"
+		/*String query= "SELECT C.Usuario as usuario,E.CreditoId,A.dispositivo,A.folio, A.pagoMontoCobrado,0 montoGL"
+				+ " FROM dbsanatf.lugares_cobro A, dbsanatf.solicitudes B, dbsanatf.User C,dbsanatf.clientes D,dbsanatf.bachtable E"
+				+ " where A.idCliente = B.idCliente and A.id in (" + clientes + ")"
+				+ " and B.User_id=C.User_id"
+				+ " and A.idCliente = D.idCliente"
+				+ " and D.idClienteSANA = E.ClienteId";*/
+		
+		String query= "SELECT if (D.idgrupo is not null or D.idgrupo>0,"
+				+ " (SELECT sum(pagoMontoCobrado) "
+				+ " FROM dbsanatf.lugares_cobro AA,dbsanatf.clientes DD"
+				+ " where DD.idgrupo = D.idgrupo"
+				+ " and AA.idCliente = DD.idCliente"
+				+ " and AA.fechaVisita = A.fechaVisita)"
+				+ " ,A.pagoMontoCobrado) pagoMontoCobrado ,"
+				+ " C.Usuario as usuario,E.CreditoId,A.dispositivo,A.folio,0 montoGL"
 				+ " FROM dbsanatf.lugares_cobro A, dbsanatf.solicitudes B, dbsanatf.User C,dbsanatf.clientes D,dbsanatf.bachtable E"
 				+ " where A.idCliente = B.idCliente and A.id in (" + clientes + ")"
 				+ " and B.User_id=C.User_id"
 				+ " and A.idCliente = D.idCliente"
 				+ " and D.idClienteSANA = E.ClienteId";
+
 
 				
 		

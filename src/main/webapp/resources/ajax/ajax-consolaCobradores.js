@@ -57,7 +57,7 @@ function seleccionados() {
         return +e.value;
     });
 
-    alert(arrClientes.join(','));
+    //alert(arrClientes.join(','));
     
     var ajax_data = {};
     
